@@ -18,7 +18,6 @@ module Relish
     private
     
       def post(tar_gz_data)
-        p url
         resource = RestClient::Resource.new(url)
         resource.post(tar_gz_data, :content_type => 'application/x-gzip')
       end
