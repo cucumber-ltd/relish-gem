@@ -11,6 +11,7 @@ module Relish
       end
       
       def run
+        puts "pushing to #{url}"
         post(features_as_tar_gz)
         puts "sent:\n#{files.join("\n")}"
       end
