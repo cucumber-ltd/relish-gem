@@ -20,6 +20,9 @@ module Relish
         resource = RestClient::Resource.new(url)
         resource.post(tar_gz_data, :content_type => 'application/x-gzip')
         puts "sent:\n#{files.join("\n")}"
+      rescue RestClient::ResourceNotFound => exception
+        warn exception.response
+        exit 1
       rescue RestClient::BadRequest => exception
         warn exception.response
         exit 1
@@ -29,13 +32,13 @@ module Relish
         host = @options[:host]
         account = @options[:account]
         project = @options[:project]
-        "http://#{host}/pushes?account_id=#{account}&project_id=#{project}"
+        "http://#{host}/pushes?account_id=#{account}&project_id=#{project}&api_token=#{api_token}"
       end
       
-      def options
-        {}
+      def api_token
+        File.read("~/.relish/api_token")
       end
-
+      
       def features_as_tar_gz
         stream = StringIO.new
         
