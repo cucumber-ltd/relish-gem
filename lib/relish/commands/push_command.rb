@@ -20,10 +20,10 @@ module Relish
         resource = RestClient::Resource.new(url)
         resource.post(tar_gz_data, :content_type => 'application/x-gzip')
         puts "sent:\n#{files.join("\n")}"
-      rescue RestClient::ResourceNotFound => exception
-        warn exception.response
-        exit 1
-      rescue RestClient::BadRequest => exception
+      rescue RestClient::ResourceNotFound,
+             RestClient::Unauthorized,
+             RestClient::BadRequest => exception
+             
         warn exception.response
         exit 1
       end
