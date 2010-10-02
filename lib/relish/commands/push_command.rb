@@ -32,11 +32,15 @@ module Relish
         host = @options[:host]
         account = @options[:account]
         project = @options[:project]
-        "http://#{host}/pushes?account_id=#{account}&project_id=#{project}&api_token=#{api_token}"
+        version = @options[:version]
+        
+        "http://#{host}/pushes?account_id=#{account}&project_id=#{project}&api_token=#{api_token}".tap do |str|
+          str << "&version_id=#{version}" if version
+        end
       end
       
       def api_token
-        File.read("~/.relish/api_token")
+        File.read("#{home_directory}/.relish/api_token")
       end
       
       def features_as_tar_gz
@@ -58,6 +62,18 @@ module Relish
       
       def files
         Dir['features/**/*.{feature,md}']
+      end
+      
+      def home_directory
+        running_on_windows? ? ENV['USERPROFILE'] : ENV['HOME']
+      end
+
+      def running_on_windows?
+        RUBY_PLATFORM =~ /mswin32|mingw32/
+      end
+
+      def running_on_a_mac?
+        RUBY_PLATFORM =~ /-darwin\d/
       end
     end
   end

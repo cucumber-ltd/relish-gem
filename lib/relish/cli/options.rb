@@ -15,6 +15,7 @@ module Relish
         opt     :host, "Host to connect to",       :default => "relishapp.com"
         opt     :account, "Account to connect to", :type => String, :required => true
         opt     :project, "Project to connect to", :type => String, :required => true
+        opt     :version, "Version to connect to", :type => String
         stop_on valid_commands
       end
 
