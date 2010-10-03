@@ -41,7 +41,7 @@ PLATFORMS
 
 DEPENDENCIES
   archive-tar-minitar (~> 0.5.2)
-  aruba (~> 0.2.1)
+  aruba (~> 0.2.2)
   bundler (~> 1.0.0)
   cucumber (~> 0.8.5)
   rake (~> 0.8.7)

@@ -7,16 +7,10 @@ module Relish
   module Command
     class Push < Base
       
-      def initialize(global_options)
-        @options = global_options
-      end
-      
       def run
-        post features_as_tar_gz
+        post files_as_tar_gz
       end
-      
-    private
-    
+          
       def post(tar_gz_data)
         resource = RestClient::Resource.new(url)
         resource.post(tar_gz_data, :content_type => 'application/x-gzip')
@@ -30,19 +24,21 @@ module Relish
       end
       
       def url
-        host = @options[:host]
-        account = @options[:account]
-        project = @options[:project]
-        version = @options[:version]
-        
-        "http://#{host}/pushes?account_id=#{account}&project_id=#{project}&api_token=#{api_token}".tap do |str|
-          str << "&version_id=#{version}" if version
+        "".tap do |str|
+          str << "http://#{host}/pushes?"
+          str << "account_id=#{account}&"
+          str << "project_id=#{project}&"
+          str << "version_id=#{version}&" if version
+          str << "api_token=#{api_token}"
         end
       end
       
-      def features_as_tar_gz
+      def version
+        @options[:version]
+      end
+      
+      def files_as_tar_gz
         stream = StringIO.new
-        
         begin
           tgz = Zlib::GzipWriter.new(stream)
           tar = Archive::Tar::Minitar::Output.new(tgz)
@@ -50,10 +46,8 @@ module Relish
             Archive::Tar::Minitar.pack_file(entry, tar)
           end
         ensure
-          # Closes both tar and sgz.
-          tar.close if tar
+          tar.close if tar # Closes both tar and tgz.
         end
-        
         stream.string
       end
       

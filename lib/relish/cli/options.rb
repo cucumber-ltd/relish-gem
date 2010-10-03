@@ -4,17 +4,20 @@ require 'relish/commands/push'
 module Relish
   module Cli
     class OptionsParser < Trollop::Parser
+      
       COMMANDS = { 'push' => Commands::Push }
       
       def initialize(error_stream, out_stream)
         super
         
-        banner  "This is the relish gem. Valid commands are: #{valid_commands.join(",")}"
-        opt     :help, "Show help information"
-        opt     :host, "Host to connect to",       :default => "relishapp.com"
-        opt     :account, "Account to connect to", :type => String, :required => true
-        opt     :project, "Project to connect to", :type => String, :required => true
-        opt     :version, "Version to connect to", :type => String
+        banner "This is the relish gem. Valid commands are: #{valid_commands.join(",")}"
+        
+        opt :help,    "Show help information"
+        opt :host,    "Host to connect to",    :short => '-h', :type => String
+        opt :account, "Account to connect to", :short => '-a', :type => String
+        opt :project, "Project to connect to", :short => '-p', :type => String
+        opt :version, "Version to connect to", :short => '-v', :type => String
+        
         stop_on valid_commands
       end
 
