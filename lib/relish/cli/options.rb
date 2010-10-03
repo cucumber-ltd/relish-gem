@@ -1,11 +1,10 @@
-require 'rubygems'
 require 'trollop'
-require 'relish/commands/push_command'
+require 'relish/commands/push'
 
 module Relish
   module Cli
     class OptionsParser < Trollop::Parser
-      COMMANDS = { 'push' => Commands::PushCommand }
+      COMMANDS = { 'push' => Commands::Push }
       
       def initialize(error_stream, out_stream)
         super

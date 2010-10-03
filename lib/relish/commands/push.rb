@@ -4,8 +4,9 @@ require 'stringio'
 require 'rest_client'
 
 module Relish
-  module Commands
-    class PushCommand
+  module Command
+    class Push < Base
+      
       def initialize(global_options)
         @options = global_options
       end
@@ -39,10 +40,6 @@ module Relish
         end
       end
       
-      def api_token
-        File.read("#{home_directory}/.relish/api_token")
-      end
-      
       def features_as_tar_gz
         stream = StringIO.new
         
@@ -64,17 +61,6 @@ module Relish
         Dir['features/**/*.{feature,md}']
       end
       
-      def home_directory
-        running_on_windows? ? ENV['USERPROFILE'] : ENV['HOME']
-      end
-
-      def running_on_windows?
-        RUBY_PLATFORM =~ /mswin32|mingw32/
-      end
-
-      def running_on_a_mac?
-        RUBY_PLATFORM =~ /-darwin\d/
-      end
     end
   end
 end
