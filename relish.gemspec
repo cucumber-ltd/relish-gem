@@ -24,7 +24,7 @@ Gem::Specification.new do |s|
     'rest-client'         => '~> 1.6.1',
     'trollop'             => '~> 1.16.2',
     'rspec'               => '~> 2.0.0.beta.22',
-    'cucumber'            => '~> 0.8.5',
+    'cucumber'            => '~> 0.9.1',
     'aruba'               => '~> 0.2.2'
   }.each do |lib, version|
     s.add_development_dependency lib, version
