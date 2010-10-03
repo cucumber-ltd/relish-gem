@@ -1,8 +1,9 @@
+@announce
 Feature: Push
-  As a Relish user
-  In order to push my features to the Relish server
-  I want to run the relish push command
+  In order to send my features to relishapp.com
+  As a Relish user dev
+  I want a push command
   
-  Scenario: Push one feature file to a project
-    Given pending
-  
+  Scenario: Specify everything at the command-line
+    When I run "relish push --host localhost:80 --project rspec-core --user rspec"
+    When it should POST to "http://localhost:80/rspec/rspec-core"
