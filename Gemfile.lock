@@ -16,6 +16,7 @@ GEM
       json (~> 1.4.6)
       term-ansicolor (~> 1.0.5)
     diff-lcs (1.1.2)
+    fakeweb (1.3.0)
     gherkin (2.2.7)
       json (~> 1.4.6)
       term-ansicolor (~> 1.0.5)
@@ -46,6 +47,7 @@ DEPENDENCIES
   aruba (~> 0.2.2)
   bundler (~> 1.0.0)
   cucumber (~> 0.9.1)
+  fakeweb (~> 1.3.0)
   rake (~> 0.8.7)
   relish!
   rest-client (~> 1.6.1)

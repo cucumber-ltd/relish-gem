@@ -1,4 +1,5 @@
 require 'trollop'
+require 'relish/helpers'
 
 module Relish
   module Command
@@ -12,7 +13,7 @@ module Relish
         @options = global_options
       end
       
-      [:account, :project].each do |meth|
+      [:organization, :project].each do |meth|
         define_method meth do
           @options[meth] || parse_options_file[meth]
         end
@@ -26,9 +27,9 @@ module Relish
         @parsed_options_file ||= begin
           if File.exist?(LOCAL_OPTIONS_FILE)
             parser = Trollop::Parser.new
-            parser.opt :account, "", :short => '-a', :type => String
-            parser.opt :project, "", :short => '-p', :type => String
-            parser.opt :version, "", :short => '-v', :type => String
+            parser.opt :organization, "", :short => '-o', :type => String
+            parser.opt :project,      "", :short => '-p', :type => String
+            parser.opt :version,      "", :short => '-v', :type => String
             parser.parse(File.read(LOCAL_OPTIONS_FILE).split)
           else {} end
         end

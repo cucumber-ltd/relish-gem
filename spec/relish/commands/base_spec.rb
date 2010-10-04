@@ -4,7 +4,7 @@ module Relish
   module Command
     describe Base do
       
-      {:account => 'rspec', :project => 'rspec-core'}.each do |meth, name|
+      {:organization => 'rspec', :project => 'rspec-core'}.each do |meth, name|
         describe "##{meth}" do
           context 'passed in command line' do
             let(:base) { described_class.new({meth => name}) }
@@ -49,7 +49,7 @@ module Relish
         
         context 'with options file that exists' do
           let(:options) do
-            '--account rspec --project rspec-core'
+            '--organization rspec --project rspec-core'
           end
           
           before do
@@ -58,7 +58,7 @@ module Relish
           end
           
           it 'parses the account' do
-            base.parse_options_file[:account].should eq('rspec')
+            base.parse_options_file[:organization].should eq('rspec')
           end
           
           it 'parses the project' do

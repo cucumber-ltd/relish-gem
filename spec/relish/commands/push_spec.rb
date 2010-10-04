@@ -6,7 +6,6 @@ module Relish
       
       describe '#url' do
         before do
-          push.should_receive(:account).and_return('rspec')
           push.should_receive(:project).and_return('rspec')
           push.should_receive(:api_token).and_return('abc')
         end
@@ -16,7 +15,7 @@ module Relish
           
           specify do
             push.url.should eq(
-              "http://relishapp.com/pushes?account_id=rspec&project_id=rspec&api_token=abc"
+              "http://relishapp.com/pushes?project_id=rspec&api_token=abc"
             )
           end
         end
@@ -26,8 +25,7 @@ module Relish
           
           specify do
             push.url.should eq(
-              "http://relishapp.com/pushes?" \
-              "account_id=rspec&project_id=rspec&version_id=one&api_token=abc"
+              "http://relishapp.com/pushes?project_id=rspec&version_id=one&api_token=abc"
             )
           end
         end

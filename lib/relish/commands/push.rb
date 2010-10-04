@@ -26,7 +26,7 @@ module Relish
       def url
         "".tap do |str|
           str << "http://#{host}/pushes?"
-          str << "account_id=#{account}&"
+          str << "creator_id=#{organization}&" if organization
           str << "project_id=#{project}&"
           str << "version_id=#{version}&" if version
           str << "api_token=#{api_token}"
