@@ -11,6 +11,7 @@ module Relish
       
       def initialize(global_options = {})
         @options = global_options
+        raise @options.inspect
       end
       
       [:organization, :project].each do |meth|
