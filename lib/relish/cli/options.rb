@@ -16,7 +16,7 @@ module Relish
         opt :host,         "Host to connect to",    :short => '-h', :type => String
         opt :organization, "Account to connect to", :short => '-o', :type => String
         opt :project,      "Project to connect to", :short => '-p', :type => String
-        opt :version,      "Version to connect to", :short => '-v', :type => String
+        opt :v,      "Version to connect to", :type => String
         
         stop_on valid_commands
       end

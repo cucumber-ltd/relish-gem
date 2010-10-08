@@ -29,7 +29,7 @@ module Relish
             parser = Trollop::Parser.new
             parser.opt :organization, "", :short => '-o', :type => String
             parser.opt :project,      "", :short => '-p', :type => String
-            parser.opt :version,      "", :short => '-v', :type => String
+            parser.opt :v,      "", :type => String
             parser.parse(File.read(LOCAL_OPTIONS_FILE).split)
           else {} end
         end
