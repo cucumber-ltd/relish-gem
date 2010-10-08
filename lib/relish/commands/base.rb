@@ -13,18 +13,10 @@ module Relish
         @options = global_options
       end
       
-      # [:organization, :project].each do |meth|
-      #   define_method meth do
-      #     @options[meth] || parse_options_file[meth]
-      #   end
-      # end
-      
-      def project
-        @options[:project]
-      end
-      
-      def organization
-        @options[:organization]
+      [:organization, :project].each do |meth|
+        define_method meth do
+          @options[meth] || parse_options_file[meth]
+        end
       end
       
       def host
