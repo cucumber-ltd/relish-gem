@@ -24,6 +24,7 @@ module Relish
       end
       
       def url
+        raise project.inspect
         "".tap do |str|
           str << "http://#{host}/pushes?"
           str << "creator_id=#{organization}&" if organization
