@@ -52,7 +52,7 @@ module Relish
       end
       
       def files
-        Dir['features/**/*.{feature,md}']
+        Dir['features/**/*.{feature,md,markdown}']
       end
       
     end
