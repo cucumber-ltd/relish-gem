@@ -16,14 +16,20 @@ Gem::Specification.new do |s|
   s.require_path = "lib"
   s.files        = `git ls-files`.split("\n")
   s.test_files   = `git ls-files -- {spec,features}/*`.split("\n")
+  s.executables  = `git ls-files -- bin/*`.split("\n").map{ |f| File.basename(f) }
+
+  {
+    'archive-tar-minitar' => '~> 0.5.2',
+    'rest-client'         => '~> 1.6.1',
+    'trollop'             => '~> 1.16.2'
+  }.each do |lib, version|
+    s.add_runtime_dependency lib, version
+  end
   
   {
     'bundler'             => '~> 1.0.0',
     'rake'                => '~> 0.8.7',
-    'archive-tar-minitar' => '~> 0.5.2',
-    'rest-client'         => '~> 1.6.1',
-    'trollop'             => '~> 1.16.2',
-    'rspec'               => '~> 2.0.0.beta.22',
+    'rspec'               => '~> 2.0.0.rc',
     'cucumber'            => '~> 0.9.1',
     'aruba'               => '~> 0.2.2',
     'fakeweb'             => '~> 1.3.0'

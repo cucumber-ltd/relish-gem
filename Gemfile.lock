@@ -2,6 +2,9 @@ PATH
   remote: .
   specs:
     relish (0.0.1)
+      archive-tar-minitar (~> 0.5.2)
+      rest-client (~> 1.6.1)
+      trollop (~> 1.16.2)
 
 GEM
   remote: http://rubygems.org/
@@ -26,16 +29,16 @@ GEM
     rake (0.8.7)
     rest-client (1.6.1)
       mime-types (>= 1.16)
-    rspec (2.0.0.beta.22)
-      rspec-core (= 2.0.0.beta.22)
-      rspec-expectations (= 2.0.0.beta.22)
-      rspec-mocks (= 2.0.0.beta.22)
-    rspec-core (2.0.0.beta.22)
-    rspec-expectations (2.0.0.beta.22)
+    rspec (2.0.0.rc)
+      rspec-core (= 2.0.0.rc)
+      rspec-expectations (= 2.0.0.rc)
+      rspec-mocks (= 2.0.0.rc)
+    rspec-core (2.0.0.rc)
+    rspec-expectations (2.0.0.rc)
       diff-lcs (>= 1.1.2)
-    rspec-mocks (2.0.0.beta.22)
-      rspec-core (= 2.0.0.beta.22)
-      rspec-expectations (= 2.0.0.beta.22)
+    rspec-mocks (2.0.0.rc)
+      rspec-core (= 2.0.0.rc)
+      rspec-expectations (= 2.0.0.rc)
     term-ansicolor (1.0.5)
     trollop (1.16.2)
 
@@ -51,5 +54,5 @@ DEPENDENCIES
   rake (~> 0.8.7)
   relish!
   rest-client (~> 1.6.1)
-  rspec (~> 2.0.0.beta.22)
+  rspec (~> 2.0.0.rc)
   trollop (~> 1.16.2)
