@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name = "relish"
-  s.version = "0.0.1"
+  s.version = "0.0.2"
 
   s.required_rubygems_version = '>= 1.3.5'
   s.authors = ["Matt Wynne", "Justin Ko"]
@@ -21,7 +21,6 @@ Gem::Specification.new do |s|
   {
     'archive-tar-minitar' => '~> 0.5.2',
     'rest-client'         => '~> 1.6.1',
-    'trollop'             => '~> 1.16.2'
   }.each do |lib, version|
     s.add_runtime_dependency lib, version
   end
