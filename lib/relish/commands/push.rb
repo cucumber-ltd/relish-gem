@@ -1,3 +1,4 @@
+require 'rubygems'
 require 'zlib'
 require 'archive/tar/minitar'
 require 'stringio'
