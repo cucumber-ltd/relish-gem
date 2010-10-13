@@ -4,6 +4,9 @@ Feature: Push
   As a Relish user dev
   I want a push command
   
+  Background:
+    Given my API token "1234" is stored
+  
   Scenario: Specify everything at the command-line
-    When I run "relish push --host localhost:80 --project rspec-core --user rspec"
-    When it should POST to "http://localhost:80/rspec/rspec-core"
+    When I run relish push --host localhost:1234 --project p
+    When it should POST to "http://localhost:1234/pushes?project_id=p&api_token=1234"
