@@ -7,7 +7,7 @@ module Relish
       {:organization => 'rspec', :project => 'rspec-core'}.each do |meth, name|
         describe "##{meth}" do
           context 'passed in command line' do
-            let(:base) { described_class.new({meth => name}) }
+            let(:base) { described_class.new(["--#{meth}", name]) }
           
             it 'returns the value' do
               base.send(meth).should eq(name)
@@ -15,7 +15,7 @@ module Relish
           end
         
           context 'not passed in command line' do
-            let(:base) { described_class.new }
+            let(:base) { described_class.new([]) }
           
             context 'and options file does not exist' do
               it 'returns nil' do
@@ -28,7 +28,7 @@ module Relish
       
       describe '#host' do
         context 'passed in command line' do
-          let(:base) { described_class.new({:host => 'test.com'}) }
+          let(:base) { described_class.new(['--host', 'test.com']) }
           
           it 'returns test.com' do
             base.host.should eq('test.com')
@@ -36,7 +36,7 @@ module Relish
         end
         
         context 'not passed in command line' do
-          let(:base) { described_class.new }
+          let(:base) { described_class.new([]) }
           
           it 'returns the default host' do
             base.host.should eq(Base::DEFAULT_HOST)
@@ -45,7 +45,7 @@ module Relish
       end
       
       describe '#parse_options_file' do
-        let(:base) { described_class.new }
+        let(:base) { described_class.new([]) }
         
         context 'with options file that exists' do
           let(:options) do
@@ -57,12 +57,12 @@ module Relish
             File.stub(:read).and_return(options)
           end
           
-          it 'parses the account' do
-            base.parse_options_file[:organization].should eq('rspec')
+          it 'parses the organization' do
+            base.parse_options_file['--organization'].should eq('rspec')
           end
           
           it 'parses the project' do
-            base.parse_options_file[:project].should eq('rspec-core')
+            base.parse_options_file['--project'].should eq('rspec-core')
           end
         end
         
@@ -78,7 +78,7 @@ module Relish
       end
       
       describe '#api_token' do
-        let(:base) { described_class.new }
+        let(:base) { described_class.new([]) }
         
         it 'calls File.read with the correct path' do
           base.should_receive(:home_directory).and_return('~')

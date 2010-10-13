@@ -1,6 +1,10 @@
 #!/usr/bin/env ruby
 $:.unshift(File.expand_path(File.dirname(__FILE__) + '/../lib'))
 
-require 'relish/cli/runner'
+require 'relish/command'
 
-Relish::Cli::Runner.run(ARGV, $stderr, $stdout)
+args = ARGV.dup
+ARGV.clear
+command = args.shift.strip rescue 'help'
+
+Relish::Command.run(command, args)

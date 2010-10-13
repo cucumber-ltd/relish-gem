@@ -7,6 +7,10 @@ module Relish
   module Command
     class Push < Base
       
+      def default
+        run
+      end
+      
       def run
         post files_as_tar_gz
       end
@@ -34,7 +38,7 @@ module Relish
       end
       
       def version
-        @options[:v]
+        @options['--version'] || @options['-v']
       end
       
       def files_as_tar_gz

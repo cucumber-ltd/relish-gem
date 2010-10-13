@@ -1,4 +1,3 @@
-require 'trollop'
 require 'relish/helpers'
 
 module Relish
@@ -9,30 +8,33 @@ module Relish
       DEFAULT_HOST = 'relishapp.com'
       LOCAL_OPTIONS_FILE = '.relish'
       
-      def initialize(global_options = {})
-        @options = global_options
+      attr_reader :args
+      
+      def initialize(args)
+        @args = args
+        @options = get_options
       end
       
-      [:organization, :project].each do |meth|
-        define_method meth do
-          @options[meth] || parse_options_file[meth]
-        end
+      def organization
+        @options['--organization'] || @options['-o']
+      end
+      
+      def project
+        @options['--project'] || @options['-p']
       end
       
       def host
-        @options[:host] || DEFAULT_HOST
+        @options['--host'] || DEFAULT_HOST
       end
       
       def parse_options_file
-        @parsed_options_file ||= begin
-          if File.exist?(LOCAL_OPTIONS_FILE)
-            parser = Trollop::Parser.new
-            parser.opt :organization, "", :short => '-o', :type => String
-            parser.opt :project,      "", :short => '-p', :type => String
-            parser.opt :v,      "", :type => String
-            parser.parse(File.read(LOCAL_OPTIONS_FILE).split)
-          else {} end
-        end
+        if File.exist?(LOCAL_OPTIONS_FILE)
+          Hash[*File.read(LOCAL_OPTIONS_FILE).split]
+        else {} end
+      end
+      
+      def get_options
+        parse_options_file.merge(Hash[*args])
       end
       
       def api_token

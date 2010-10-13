@@ -3,7 +3,7 @@ Gem::Specification.new do |s|
   s.version = "0.0.1"
 
   s.required_rubygems_version = '>= 1.3.5'
-  s.authors = ["Matt Patterson", "Matt Wynne", "Justin Ko"]
+  s.authors = ["Matt Wynne", "Justin Ko"]
   s.date = "2010-09-23"
   s.description = %q{Client gem for http://relishapp.com}
   s.email = "jko170@gmail.com"
@@ -29,7 +29,7 @@ Gem::Specification.new do |s|
   {
     'bundler'             => '~> 1.0.0',
     'rake'                => '~> 0.8.7',
-    'rspec'               => '~> 2.0.0.rc',
+    'rspec'               => '~> 2.0.0',
     'cucumber'            => '~> 0.9.1',
     'aruba'               => '~> 0.2.2',
     'fakeweb'             => '~> 1.3.0'
