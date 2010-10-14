@@ -1,11 +1,8 @@
-require 'relish/helpers'
-
 module Relish
   module Command
     class Base
-      include Relish::Helpers
-      
       DEFAULT_HOST = 'relishapp.com'
+      GLOBAL_OPTIONS_FILE = File.join(File.expand_path('~'), '.relish')
       LOCAL_OPTIONS_FILE = '.relish'
       
       attr_reader :args
@@ -16,29 +13,31 @@ module Relish
       end
       
       def organization
-        @options['--organization'] || @options['-o']
+        @options['--organization'] || @options['-o'] || parsed_options_file['organization']
       end
       
       def project
-        @options['--project'] || @options['-p']
+        @options['--project'] || @options['-p'] || parsed_options_file['project']
       end
       
       def host
         @options['--host'] || DEFAULT_HOST
       end
       
-      def parse_options_file
-        if File.exist?(LOCAL_OPTIONS_FILE)
-          Hash[*File.read(LOCAL_OPTIONS_FILE).split]
-        else {} end
+      def api_token
+        parsed_options_file['api_token']
       end
       
       def get_options
-        parse_options_file.merge(Hash[*args])
+        parsed_options_file.merge(Hash[*args])
       end
       
-      def api_token
-        File.read("#{home_directory}/.relish/api_token")
+      def parsed_options_file
+        @parsed_options_file ||= {}.tap do |parsed_options|
+          [GLOBAL_OPTIONS_FILE, LOCAL_OPTIONS_FILE].each do |options_file|
+            parsed_options.merge!(YAML.load_file(options_file)) if File.exist?(options_file)
+          end
+        end
       end
       
     end
