@@ -24,7 +24,7 @@ module Relish
           end
           
           context 'contained in the options file' do
-            let(:base) { described_class.new([]) }
+            let(:base) { described_class.new }
             
             before do
               base.stub(:parsed_options_file).and_return({meth.to_s => name})
@@ -36,7 +36,7 @@ module Relish
           end
         
           context 'not passed in command line' do
-            let(:base) { described_class.new([]) }
+            let(:base) { described_class.new }
           
             context 'and options file does not exist' do
               it 'returns nil' do
@@ -57,7 +57,7 @@ module Relish
         end
         
         context 'not passed in command line' do
-          let(:base) { described_class.new([]) }
+          let(:base) { described_class.new }
           
           it 'returns the default host' do
             base.host.should eq(Base::DEFAULT_HOST)
@@ -66,7 +66,7 @@ module Relish
       end
       
       describe '#api_token' do
-        let(:base) { described_class.new([]) }
+        let(:base) { described_class.new }
         let(:options) { {'api_token' => '12345'} }
         
         before do
@@ -94,7 +94,7 @@ module Relish
       end
       
       describe '#parsed_options_file' do
-        let(:base) { described_class.new([]) }
+        let(:base) { described_class.new }
         
         context 'with options file that exists' do
           let(:options) do

@@ -1,5 +1,6 @@
 require 'relish/commands/base'
 require 'relish/commands/push'
+require 'relish/commands/config'
 
 module Relish
   module Command

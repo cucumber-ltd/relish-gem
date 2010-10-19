@@ -5,7 +5,7 @@ module Relish
     describe Push do
       
       describe '#default' do
-        let(:push) { described_class.new([]) }
+        let(:push) { described_class.new }
         
         it 'calls #run' do
           push.should_receive(:run)
@@ -20,7 +20,7 @@ module Relish
         end
         
         context 'without version' do 
-          let(:push) { described_class.new([]) }
+          let(:push) { described_class.new }
           
           specify do
             push.url.should eq(
@@ -47,19 +47,19 @@ module Relish
         end
         
         context 'with --version not in @options' do
-          let(:push) { described_class.new([]) }
+          let(:push) { described_class.new }
           specify { push.version.should be_nil }
         end
       end
       
       describe '#files_as_tar_gz' do
-        let(:push) { described_class.new([]) }
+        let(:push) { described_class.new }
         specify { expect { push.files_as_tar_gz }.to_not raise_exception }
         specify { push.files_as_tar_gz.should be_a(String) }
       end
       
       describe '#files' do
-        let(:push) { described_class.new([]) }
+        let(:push) { described_class.new }
         specify { expect { push.files }.to_not raise_exception }
         specify { push.files.should be_a(Array) }
       end
