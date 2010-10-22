@@ -17,17 +17,16 @@ module Relish
       end
           
       def post(tar_gz_data)
-        resource = RestClient::Resource.new(url)
-        resource.post(tar_gz_data, :content_type => 'application/x-gzip')
+        resource[parameters].post(tar_gz_data, :content_type => 'application/x-gzip')
         puts "sent:\n#{files.join("\n")}"
       rescue RestClient::Exception => exception
         warn exception.response
         exit 1
       end
       
-      def url
+      def parameters
         "".tap do |str|
-          str << "http://#{host}/pushes?"
+          str << "pushes?"
           str << "creator_id=#{organization}&" if organization
           str << "project_id=#{project}&"
           str << "version_id=#{version}&" if version

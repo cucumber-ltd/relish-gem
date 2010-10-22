@@ -16,4 +16,11 @@ describe Relish::Command do
     Relish::Command.run('config', [])
   end
   
+  it "recognizes the 'projects' command" do
+    projects = double
+    projects.should_receive(:default)
+    Relish::Command::Projects.should_receive(:new).with([]).and_return(projects)
+    Relish::Command.run('projects', [])
+  end
+  
 end

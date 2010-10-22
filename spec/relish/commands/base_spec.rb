@@ -47,22 +47,30 @@ module Relish
         end
       end
       
-      describe '#host' do
-        context 'passed in command line' do
+      describe '#url' do
+        context 'host passed in command line' do
           let(:base) { described_class.new(['--host', 'test.com']) }
-          
-          it 'returns test.com' do
-            base.host.should eq('test.com')
-          end
+          specify { base.url.should eq('http://test.com/api') }
         end
         
-        context 'not passed in command line' do
+        context 'host not passed in command line' do
           let(:base) { described_class.new }
           
           it 'returns the default host' do
-            base.host.should eq(Base::DEFAULT_HOST)
+            base.url.should eq("http://#{Base::DEFAULT_HOST}/api")
           end
         end
+      end
+      
+      describe '#resource' do
+        let(:base) { described_class.new }
+        
+        before do
+          base.should_receive(:url).and_return('url')
+          RestClient::Resource.should_receive(:new).with('url')
+        end
+        
+        specify { base.resource }
       end
       
       describe '#api_token' do
@@ -78,14 +86,41 @@ module Relish
         end
       end
       
+      describe '#get_param' do
+        
+        context 'given a command param' do
+          let(:base) do
+            base = described_class.new
+            base.args = ['param', '--project', 'rspec-core']
+            base
+          end
+          
+          it 'returns the first arg' do
+            base.get_param.should eq('param')
+          end
+        end
+        
+        context 'not given a command param' do
+          let(:base) do
+            base = described_class.new
+            base.args = ['--project', 'rspec-core']
+            base
+          end
+          
+          it 'returns nil' do
+            base.get_param.should be_nil
+          end
+        end
+      end
+      
       describe '#get_options' do
-        let(:base) { described_class.new(['--project', 'rspec-core']) }
         let(:options) { {'project' => 'rspec-core'} }
+        let(:base) { described_class.new(['--project', 'rspec-core']) }
         
         before do
           base.should_receive(:parsed_options_file).and_return(options)
         end
-        
+      
         it 'combines the args and options file' do
           base.get_options.should eq(
             {'project' => 'rspec-core', '--project' => 'rspec-core'}

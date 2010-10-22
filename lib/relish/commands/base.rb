@@ -7,10 +7,11 @@ module Relish
       GLOBAL_OPTIONS_FILE = File.join(File.expand_path('~'), '.relish')
       LOCAL_OPTIONS_FILE = '.relish'
       
-      attr_reader :args
+      attr_accessor :args
       
       def initialize(args = [])
         @args = args
+        @param = get_param
         @options = get_options
       end
       
@@ -22,12 +23,20 @@ module Relish
         @options['--project'] || @options['-p'] || parsed_options_file['project']
       end
       
-      def host
-        @options['--host'] || DEFAULT_HOST
+      def url
+        "http://#{@options['--host'] || DEFAULT_HOST}/api"
+      end
+      
+      def resource
+        RestClient::Resource.new(url)
       end
       
       def api_token
         parsed_options_file['api_token']
+      end
+      
+      def get_param
+        args.shift if args.size.odd?
       end
       
       def get_options

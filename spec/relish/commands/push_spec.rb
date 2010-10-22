@@ -13,7 +13,7 @@ module Relish
         end
       end
       
-      describe '#url' do
+      describe '#parameters' do
         before do
           push.should_receive(:project).and_return('rspec')
           push.should_receive(:api_token).and_return('abc')
@@ -23,8 +23,8 @@ module Relish
           let(:push) { described_class.new }
           
           specify do
-            push.url.should eq(
-              "http://relishapp.com/pushes?project_id=rspec&api_token=abc"
+            push.parameters.should eq(
+              "pushes?project_id=rspec&api_token=abc"
             )
           end
         end
@@ -33,8 +33,8 @@ module Relish
           let(:push) { described_class.new(['--version', 'one']) }
           
           specify do
-            push.url.should eq(
-              "http://relishapp.com/pushes?project_id=rspec&version_id=one&api_token=abc"
+            push.parameters.should eq(
+              "pushes?project_id=rspec&version_id=one&api_token=abc"
             )
           end
         end

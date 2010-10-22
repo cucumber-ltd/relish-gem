@@ -9,4 +9,4 @@ Feature: Push
   
   Scenario: Specify everything at the command-line
     When I run relish push --host localhost:1234 --project p
-    Then it should POST to "http://localhost:1234/pushes?project_id=p&api_token=1234"
+    Then it should POST to "http://localhost:1234/api/pushes?project_id=p&api_token=1234"
