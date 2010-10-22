@@ -3,9 +3,12 @@ require 'zlib'
 require 'archive/tar/minitar'
 require 'stringio'
 require 'rest_client'
+require 'relish/commands/help'
 
 module Relish
   module Command
+    Help.for_command(:push, "push your features to relishapp.com")
+    
     class Push < Base
       
       def default
@@ -57,5 +60,8 @@ module Relish
       end
       
     end
+    
+
   end
 end
+
