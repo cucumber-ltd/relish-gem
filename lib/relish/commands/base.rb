@@ -1,5 +1,4 @@
 require 'yaml'
-require 'json'
 
 module Relish
   module Command

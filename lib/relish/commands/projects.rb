@@ -1,3 +1,6 @@
+require 'rubygems'
+require 'json'
+
 module Relish
   module Command
     class Projects < Base
