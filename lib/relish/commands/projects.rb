@@ -7,32 +7,20 @@ module Relish
       end
       
       def list
-        a = resource['projects'].get
-        puts a
+        response = resource['projects'].get(
+          :params => {:api_token => api_token}, :accept => :json
+        )
+        puts format(response)
       rescue RestClient::Exception => exception
         warn exception.response
         exit 1
       end
       
-      def add
-        resource.get
-        puts "Project #{@param} added."
-      rescue RestClient::Exception => exception
-        warn exception.response
-        exit 1
+      def format(response)
+        json = JSON.parse(response)
+        json.map {|h| h['project']['slug']}.join("\n")
       end
-      
-      # 
-      # def url
-      #   "".tap do |str|
-      #     str << "http://#{host}/api/pushes?"
-      #     str << "creator_id=#{organization}&" if organization
-      #     str << "project_id=#{project}&"
-      #     str << "version_id=#{version}&" if version
-      #     str << "api_token=#{api_token}"
-      #   end
-      # end
-      
+            
     end
   end
 end
