@@ -21,7 +21,7 @@ module Relish
       
       def format(response)
         json = JSON.parse(response)
-        json.map {|h| h['project']['slug']}.join("\n")
+        json.map {|h| h['project']['handle']}.join("\n")
       end
             
     end
