@@ -19,6 +19,14 @@ module Relish
         exit 1
       end
       
+      def add
+        puts resource['projects'].post(:api_token => api_token, :handle => @param)
+      rescue RestClient::Exception => exception
+        warn exception.response
+        exit 1
+      end
+      
+    private
       def format(response)
         json = JSON.parse(response)
         json.map do |hash| 
