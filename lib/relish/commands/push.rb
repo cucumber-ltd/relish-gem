@@ -20,7 +20,8 @@ module Relish
       end
           
       def post(tar_gz_data)
-        resource[parameters].post(tar_gz_data, :content_type => 'application/x-gzip')
+        resource["pushes?#{parameters}"].post(tar_gz_data,
+          :content_type => 'application/x-gzip')
         puts "sent:\n#{files.join("\n")}"
       rescue RestClient::Exception => exception
         warn exception.response
@@ -29,7 +30,6 @@ module Relish
       
       def parameters
         "".tap do |str|
-          str << "pushes?"
           str << "creator_id=#{organization}&" if organization
           str << "project_id=#{project}&"
           str << "version_id=#{version}&" if version

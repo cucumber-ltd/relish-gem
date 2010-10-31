@@ -24,7 +24,7 @@ module Relish
           
           specify do
             push.parameters.should eq(
-              "pushes?project_id=rspec&api_token=abc"
+              "project_id=rspec&api_token=abc"
             )
           end
         end
@@ -34,7 +34,7 @@ module Relish
           
           specify do
             push.parameters.should eq(
-              "pushes?project_id=rspec&version_id=one&api_token=abc"
+              "project_id=rspec&version_id=one&api_token=abc"
             )
           end
         end

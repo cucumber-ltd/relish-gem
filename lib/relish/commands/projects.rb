@@ -26,6 +26,13 @@ module Relish
         exit 1
       end
       
+      def remove
+        puts resource["projects/#{@param}?api_token=#{api_token}"].delete
+      rescue RestClient::Exception => exception
+        warn exception.response
+        exit 1
+      end
+      
     private
       def format(response)
         json = JSON.parse(response)
