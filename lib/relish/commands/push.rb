@@ -11,9 +11,7 @@ module Relish
     
     class Push < Base
       
-      def default
-        run
-      end
+      def default; run end
       
       def run
         post files_as_tar_gz

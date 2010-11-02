@@ -14,6 +14,10 @@ module Relish
         end)
       end
       
+      def add
+        raise args.inspect
+      end
+      
     end
   end
 end

@@ -16,11 +16,11 @@ module Relish
       end
       
       def organization
-        @options['--organization'] || @options['-o'] || parsed_options_file['organization']
+        @options['--organization'] || parsed_options_file['organization']
       end
       
       def project
-        @options['--project'] || @options['-p'] || parsed_options_file['project']
+        @options['--project'] || parsed_options_file['project']
       end
       
       def url

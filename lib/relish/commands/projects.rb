@@ -5,9 +5,7 @@ module Relish
   module Command
     class Projects < Base
       
-      def default
-        list
-      end
+      def default; list end
       
       def list
         response = resource['projects'].get(
