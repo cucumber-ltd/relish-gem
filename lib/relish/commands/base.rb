@@ -9,23 +9,21 @@ module Relish
       
       attr_writer :args
       
+      def self.option(name)
+        define_method(name) do
+          @options[name.to_s] || parsed_options_file[name.to_s]
+        end
+      end
+      
       def initialize(args = [])
         @args = clean_args(args)
         @param = get_param
         @options = get_options
       end
       
-      def organization
-        @options['organization']
-      end
-      
-      def project
-        @options['project']
-      end
-      
-      def api_token
-        @options['api_token']
-      end
+      option :organization
+      option :project
+      option :api_token
       
       def url
         "http://#{@options['host'] || DEFAULT_HOST}/api"
