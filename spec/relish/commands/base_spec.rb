@@ -6,17 +6,8 @@ module Relish
     
       {:organization => 'rspec', :project => 'rspec-core'}.each do |meth, name|
         describe "##{meth}" do
-          context 'passed in command line as full arg' do
+          context 'passed in command line' do
             let(:base) { described_class.new(["--#{meth}", name]) }
-          
-            it 'returns the value' do
-              base.send(meth).should eq(name)
-            end
-          end
-          
-          context 'passed in command line as short arg' do
-            let(:short_arg) { meth.to_s[0,1] }
-            let(:base) { described_class.new(["-#{short_arg}", name]) }
           
             it 'returns the value' do
               base.send(meth).should eq(name)
@@ -123,7 +114,7 @@ module Relish
       
         it 'combines the args and options file' do
           base.get_options.should eq(
-            {'project' => 'rspec-core', '--project' => 'rspec-core'}
+            {'project' => 'rspec-core'}
           )
         end
       end

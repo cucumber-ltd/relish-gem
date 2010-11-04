@@ -15,7 +15,9 @@ module Relish
       end
       
       def add
-        raise args.inspect
+        File.open(LOCAL_OPTIONS_FILE, 'a') do |f|
+          f.write(YAML::dump(Hash[*@args]))
+        end
       end
       
     end

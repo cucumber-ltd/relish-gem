@@ -36,7 +36,7 @@ module Relish
       end
       
       def version
-        @options['--version'] || @options['-v']
+        @options['version']
       end
       
       def files_as_tar_gz
