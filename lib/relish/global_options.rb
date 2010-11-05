@@ -6,18 +6,19 @@ module Relish
     def store(options)
       new_options = current_options.merge(options)
       File.open(path, 'w') do |file|
-        file.puts new_options.to_yaml
+        YAML.dump(new_options, file)
       end
     end
     
   private
   
     def current_options
+      return {} unless File.exist?(path)
       YAML.load_file(path)
     end
     
     def path
-      Relish::Commands::Base::GLOBAL_OPTIONS_FILE
+      Relish::Command::Base::GLOBAL_OPTIONS_FILE
     end
   end
 end

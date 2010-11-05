@@ -14,7 +14,7 @@ module Relish
         puts format(response)
       rescue RestClient::Exception => exception
         warn exception.response
-        exit 1
+        exit exception.http_code
       end
       
       def add

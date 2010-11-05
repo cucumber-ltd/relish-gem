@@ -31,13 +31,14 @@ module Relish
       
       def get_and_store_api_token
         api_token = get_api_token
-        global_options.store(:api_token => api_token)
+        global_options.store('api_token' => api_token)
         api_token
       end
       
       def get_api_token
         email, password = ui.get_credentials
-        resource(:user => email, :password => password)['token'].get
+        # this looks a bit wierd, but otherwise it will serialize to YAML as a RestClient::RawResponse
+        String.new(resource(:user => email, :password => password)['token'].get)
       end
       
       def url
