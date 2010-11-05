@@ -66,15 +66,25 @@ module Relish
       
       describe '#api_token' do
         let(:base) { described_class.new }
-        let(:options) { {'api_token' => '12345'} }
+        before { base.stub(:parsed_options_file).and_return(options) }
         
-        before do
-          base.should_receive(:parsed_options_file).and_return(options)
+        context "when the token is stored locally" do
+          let(:options) { {'api_token' => '12345'} }
+          
+          it 'parses the api token' do
+            base.api_token.should eq('12345')
+          end
         end
         
-        it 'parses the api token' do
-          base.api_token.should eq('12345')
+        context "when the token is not stored locally" do
+          let(:options) { {} }
+          
+          it "asks the user for their credentials" do
+            base.should_receive(:get_api_credentials)
+            base.api_token
+          end
         end
+        
       end
       
       describe '#get_param' do
