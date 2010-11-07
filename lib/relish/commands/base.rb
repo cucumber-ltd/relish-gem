@@ -1,23 +1,19 @@
 require 'yaml'
 require 'relish/ui'
 require 'relish/options_file'
+require 'relish/commands/dsl'
 
 module Relish
   module Command
     class Base
+      extend Dsl
+      
       DEFAULT_HOST = 'relishapp.com'
       GLOBAL_OPTIONS_FILE = File.join(File.expand_path('~'), '.relish')
       LOCAL_OPTIONS_FILE = '.relish'
       
       attr_writer :args
-      
-      def self.option(name, options = {})
-        default_proc = options[:default] || lambda {}
-        define_method(name) do
-          @cli_options[name.to_s] || parsed_options_file[name.to_s] || instance_exec(&default_proc)
-        end
-      end
-      
+            
       def initialize(args = [])
         @args = clean_args(args)
         @param = get_param
