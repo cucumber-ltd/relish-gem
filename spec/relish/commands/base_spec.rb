@@ -14,11 +14,11 @@ module Relish
             end
           end
           
-          context 'contained in the options file' do
+          context 'contained in the local options file' do
             let(:base) { described_class.new }
             
             before do
-              base.stub(:parsed_options_file).and_return({meth.to_s => name})
+              OptionsFile.stub(:new).with(Base::LOCAL_OPTIONS_FILE).and_return({meth.to_s => name})
             end
             
             it 'returns the value' do
@@ -59,7 +59,7 @@ module Relish
 
         before do
           Ui.stub(:new).and_return(ui)
-          base.stub(:parsed_options_file).and_return(options)
+          OptionsFile.stub(:new => options)
         end
         
         context "when the token is stored locally" do
@@ -76,7 +76,7 @@ module Relish
           let(:credentials) { ['testuser', 'testpassword'] }
           
           let(:global_options) do
-            double = double(OptionsFile)
+            double = double(OptionsFile, :[] => nil)
             OptionsFile.stub(:new => double)
             double
           end

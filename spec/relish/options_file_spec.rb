@@ -7,7 +7,7 @@ module Relish
   
     after { FileUtils.rm_rf(path) }
   
-    describe '#options' do
+    describe '#[]' do
     
       context 'with options file that exists' do
         let(:options) do
@@ -19,11 +19,11 @@ module Relish
         end
       
         it 'parses the organization' do
-          global_options.options['organization'].should eq('rspec')
+          global_options['organization'].should eq('rspec')
         end
       
         it 'parses the project' do
-          global_options.options['project'].should eq('rspec-core')
+          global_options['project'].should eq('rspec-core')
         end
       end
     
@@ -33,7 +33,7 @@ module Relish
         end
       
         it 'returns an empty hash' do
-          global_options.options.should eq({})
+          global_options.should eq({})
         end
       end
     end

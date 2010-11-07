@@ -19,6 +19,14 @@ module Relish
       end
     end
     
+    def [](key)
+      options[key]
+    end
+    
+    def == (other)
+      options == other
+    end
+    
     # Stored options as a hash
     def options
       @options ||= current_options

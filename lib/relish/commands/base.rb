@@ -13,6 +13,7 @@ module Relish
       LOCAL_OPTIONS_FILE = '.relish'
       
       attr_writer :args
+      attr_reader :cli_options
             
       def initialize(args = [])
         @args = clean_args(args)
@@ -37,7 +38,7 @@ module Relish
       
       def get_and_store_api_token
         api_token = get_api_token
-        global_options.store('api_token' => api_token)
+        global_options_file.store('api_token' => api_token)
         api_token
       end
       
@@ -68,8 +69,12 @@ module Relish
         cleaned
       end
       
-      def global_options
+      def global_options_file
         @global_options ||= OptionsFile.new(GLOBAL_OPTIONS_FILE)
+      end
+
+      def local_options_file
+        @local_options ||= OptionsFile.new(LOCAL_OPTIONS_FILE)
       end
       
       def ui
