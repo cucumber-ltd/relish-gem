@@ -53,14 +53,6 @@ module Relish
         RestClient::Resource.new(url, options)
       end
 
-      def parsed_options_file
-        @parsed_options_file ||= {}.tap do |parsed_options|
-          [GLOBAL_OPTIONS_FILE, LOCAL_OPTIONS_FILE].each do |options_file|
-            parsed_options.merge!(YAML.load_file(options_file)) if File.exist?(options_file)
-          end
-        end
-      end
-      
       def clean_args(args)
         cleaned = []
         args.each do |arg|
