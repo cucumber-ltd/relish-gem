@@ -8,10 +8,6 @@ module Relish
     class Base
       extend Dsl
       
-      DEFAULT_HOST = 'relishapp.com'
-      GLOBAL_OPTIONS_FILE = File.join(File.expand_path('~'), '.relish')
-      LOCAL_OPTIONS_FILE = '.relish'
-      
       attr_writer :args
       attr_reader :cli_options
             
@@ -34,7 +30,7 @@ module Relish
       option :organization
       option :project
       option :api_token, :default => lambda { get_and_store_api_token }
-      option :host,      :default => lambda { DEFAULT_HOST }
+      option :host,      :default => lambda { Relish.default_host }
       
       def get_and_store_api_token
         api_token = get_api_token
@@ -62,11 +58,11 @@ module Relish
       end
       
       def global_options_file
-        @global_options ||= OptionsFile.new(GLOBAL_OPTIONS_FILE)
+        @global_options ||= OptionsFile.new(Relish.global_options_file)
       end
 
       def local_options_file
-        @local_options ||= OptionsFile.new(LOCAL_OPTIONS_FILE)
+        @local_options ||= OptionsFile.new(Relish.local_options_file)
       end
       
       def ui

@@ -7,15 +7,15 @@ module Relish
       end
       
       def show
-        puts(if File.exists?(LOCAL_OPTIONS_FILE)
-          IO.read(LOCAL_OPTIONS_FILE)
+        puts(if File.exists?(Relish.local_options_file)
+          IO.read(Relish.local_options_file)
         else
-          "No #{LOCAL_OPTIONS_FILE} file exists"
+          "No #{Relish.local_options_file} file exists"
         end)
       end
       
       def add
-        File.open(LOCAL_OPTIONS_FILE, 'a') do |f|
+        File.open(Relish.local_options_file, 'a') do |f|
           f.write(YAML::dump(Hash[*@args]))
         end
       end

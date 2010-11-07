@@ -18,7 +18,7 @@ module Relish
             let(:base) { described_class.new }
             
             before do
-              OptionsFile.stub(:new).with(Base::LOCAL_OPTIONS_FILE).and_return({meth.to_s => name})
+              OptionsFile.stub(:new).with(Relish.local_options_file).and_return({meth.to_s => name})
             end
             
             it 'returns the value' do
@@ -48,7 +48,7 @@ module Relish
           let(:base) { described_class.new }
           
           it 'returns the default host' do
-            base.url.should eq("http://#{Base::DEFAULT_HOST}/api")
+            base.url.should eq("http://#{Relish.default_host}/api")
           end
         end
       end
