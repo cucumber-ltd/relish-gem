@@ -11,6 +11,8 @@ module Relish
     
     class Push < Base
       
+      option :version
+      
       def default; run end
       
       def run
@@ -33,10 +35,6 @@ module Relish
           str << "version_id=#{version}&" if version
           str << "api_token=#{api_token}"
         end
-      end
-      
-      def version
-        @options['version']
       end
       
       def files_as_tar_gz

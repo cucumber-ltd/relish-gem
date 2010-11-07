@@ -53,20 +53,14 @@ module Relish
         end
       end
       
-      describe '#resource' do
-        let(:base) { described_class.new }
-        
-        before do
-          base.should_receive(:url).and_return('url')
-          RestClient::Resource.should_receive(:new).with('url')
-        end
-        
-        specify { base.resource }
-      end
-      
       describe '#api_token' do
         let(:base) { described_class.new }
-        before { base.stub(:parsed_options_file).and_return(options) }
+        let(:ui)   { double(Ui) }
+
+        before do
+          Ui.stub(:new).and_return(ui)
+          base.stub(:parsed_options_file).and_return(options)
+        end
         
         context "when the token is stored locally" do
           let(:options) { {'api_token' => '12345'} }
@@ -75,14 +69,37 @@ module Relish
             base.api_token.should eq('12345')
           end
         end
-        
+
         context "when the token is not stored locally" do
-          let(:options) { {} }
+          let(:options)     { {} }
+          let(:api_token)   { 'abasfawer23123' }
+          let(:credentials) { ['testuser', 'testpassword'] }
           
-          it "asks the user for their credentials" do
-            base.should_receive(:get_api_credentials)
+          let(:global_options) do
+            double = double(OptionsFile)
+            OptionsFile.stub(:new => double)
+            double
+          end
+          
+          def api_endpoint(name, credentials)
+            user, password = *credentials
+            endpoint = double
+
+            RestClient::Resource.stub(:new).
+              with(anything, :user => user, :password => password).
+              and_return name => endpoint
+    
+            endpoint
+          end
+          
+          it "asks the user for their credentials and send them to the server" do
+            ui.should_receive(:get_credentials).and_return(credentials)
+            api_endpoint('token', credentials).should_receive(:get).and_return(api_token)
+            global_options.should_receive(:store).with 'api_token' => api_token
+            
             base.api_token
           end
+          
         end
         
       end
@@ -126,39 +143,6 @@ module Relish
           base.get_options.should eq(
             {'project' => 'rspec-core'}
           )
-        end
-      end
-      
-      describe '#parsed_options_file' do
-        let(:base) { described_class.new }
-        
-        context 'with options file that exists' do
-          let(:options) do
-            {'organization' => 'rspec', 'project' => 'rspec-core'}
-          end
-          
-          before do
-            File.should_receive(:exist?).twice.and_return(true)
-            YAML.should_receive(:load_file).twice.and_return(options)
-          end
-          
-          it 'parses the organization' do
-            base.parsed_options_file['organization'].should eq('rspec')
-          end
-          
-          it 'parses the project' do
-            base.parsed_options_file['project'].should eq('rspec-core')
-          end
-        end
-        
-        context 'with options file that does not exist' do
-          before do
-            File.stub(:exist?).and_return(false)
-          end
-          
-          it 'returns an empty hash' do
-            base.parsed_options_file.should eq({})
-          end
         end
       end
       
