@@ -131,21 +131,6 @@ module Relish
         end
       end
       
-      describe '#get_options' do
-        let(:options) { {'project' => 'rspec-core'} }
-        let(:base) { described_class.new(['--project', 'rspec-core']) }
-        
-        before do
-          base.should_receive(:parsed_options_file).and_return(options)
-        end
-      
-        it 'combines the args and options file' do
-          base.get_options.should eq(
-            {'project' => 'rspec-core'}
-          )
-        end
-      end
-      
     end
   end
 end

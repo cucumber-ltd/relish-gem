@@ -17,7 +17,7 @@ module Relish
       def initialize(args = [])
         @args = clean_args(args)
         @param = get_param
-        @cli_options = get_options
+        @cli_options = Hash[*@args]
       end
       
       def url
@@ -28,10 +28,6 @@ module Relish
         @args.shift if @args.size.odd?
       end
 
-      def get_options
-        parsed_options_file.merge(Hash[*@args])
-      end      
-      
     private
       
       option :organization
