@@ -14,6 +14,7 @@ module Relish
     # will be overwritten.
     def store(options)
       new_options = self.options.merge(options)
+      FileUtils.touch(@path)
       File.open(@path, 'w') do |file|
         YAML.dump(new_options, file)
       end
