@@ -50,11 +50,7 @@ module Relish
       end
 
       def clean_args(args)
-        cleaned = []
-        args.each do |arg|
-          cleaned << arg.sub('--', '')
-        end
-        cleaned
+        args.inject([]) {|cleaned, arg| cleaned << arg.sub('--', '') }
       end
       
       def global_options_file
