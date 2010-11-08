@@ -8,6 +8,11 @@ module Relish
     class Base
       extend Dsl
       
+      option :organization
+      option :project
+      option :api_token, :default => lambda { get_and_store_api_token }
+      option :host,      :default => lambda { Relish.default_host }, :display => false
+      
       attr_writer :args
       attr_reader :cli_options
             
@@ -15,6 +20,8 @@ module Relish
         @args = clean_args(args)
         @param = get_param
         @cli_options = Hash[*@args]
+
+        validate_cli_options
       end
       
       def url
@@ -26,12 +33,7 @@ module Relish
       end
 
     private
-      
-      option :organization
-      option :project
-      option :api_token, :default => lambda { get_and_store_api_token }
-      option :host,      :default => lambda { Relish.default_host }
-      
+
       def get_and_store_api_token
         api_token = get_api_token
         global_options_file.store('api_token' => api_token)
@@ -48,13 +50,28 @@ module Relish
       def resource(options = {})
         RestClient::Resource.new(url, options)
       end
-
+      
       def clean_args(args)
-        cleaned = []
-        args.each do |arg|
-          cleaned << arg.sub('--', '')
+        args.inject([]) {|cleaned, arg| cleaned << arg.sub('--', '') }
+      end
+      
+      def valid_option_names
+        self.class.option_names
+      end
+      
+      def option_names_to_display
+        self.class.option_names_to_display
+      end
+      
+      def validate_cli_options
+        @cli_options.keys.each do |option|
+          unless valid_option_names.include?(option.to_s)
+            puts "#{option} is not a valid option.\n" +
+                 "Valid options are: #{option_names_to_display.sort.join(', ')}"
+                  
+            exit 1
+          end
         end
-        cleaned
       end
       
       def global_options_file

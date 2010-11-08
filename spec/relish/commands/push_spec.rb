@@ -41,12 +41,12 @@ module Relish
       end
       
       describe '#version' do
-        context 'with --version in @options' do
+        context 'with --version passed in command line' do
           let(:push) { described_class.new(['--version', 'one']) }
           specify { push.version.should eq('one') }
         end
         
-        context 'with --version not in @options' do
+        context 'with --version not passed in command line' do
           let(:push) { described_class.new }
           specify { push.version.should be_nil }
         end
