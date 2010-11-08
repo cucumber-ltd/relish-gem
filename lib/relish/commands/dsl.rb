@@ -3,13 +3,26 @@ module Relish
     module Dsl
       
       def option(name, options = {})
-        default_proc = options[:default] || lambda {}
+        name = name.to_s
+        default_proc = options[:default] || Proc.new {}
+        
         define_method(name) do
-          cli_options[name.to_s] ||
-            local_options_file[name.to_s] ||
-            global_options_file[name.to_s] ||
-            instance_exec(&default_proc)
+          cli_options[name] ||
+          local_options_file[name] ||
+          global_options_file[name] ||
+          instance_exec(&default_proc)
         end
+        
+        option_names << name
+        option_names_to_display << name unless options[:display] == false
+      end
+      
+      def option_names
+        @@option_names ||= []
+      end
+      
+      def option_names_to_display
+        @@option_names_to_display ||= []
       end
       
     end

@@ -15,9 +15,7 @@ module Relish
       end
       
       def add
-        File.open(Relish.local_options_file, 'a') do |f|
-          f.write(YAML::dump(Hash[*@args]))
-        end
+        OptionsFile.new(Relish.local_options_file).store(@cli_options)
       end
       
     end
