@@ -35,7 +35,7 @@ module Relish
       def format(response)
         json = JSON.parse(response)
         json.map do |hash| 
-          result = hash['project']['handle']
+          result = hash['project']['full_handle']
           result << " (private)" if hash['project']['private']
           result
         end.join("\n")
