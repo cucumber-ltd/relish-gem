@@ -8,7 +8,6 @@ module Relish
     class Base
       extend Dsl
       
-      option :organization
       option :project
       option :api_token, :default => lambda { get_and_store_api_token }
       option :host,      :default => lambda { Relish.default_host }, :display => false
