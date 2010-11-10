@@ -10,22 +10,20 @@ module Relish
     Help.for_command(:push, "push your features to relishapp.com")
     
     class Push < Base
-      
       option :version
       
-      def default; run end
-      
-      def run
+      command :default => :run
+
+      command :run do
         post files_as_tar_gz
       end
+      
+    private
           
       def post(tar_gz_data)
         resource["pushes?#{parameters}"].post(tar_gz_data,
           :content_type => 'application/x-gzip')
         puts "sent:\n#{files.join("\n")}"
-      rescue RestClient::Exception => exception
-        warn exception.response
-        exit 1
       end
       
       def parameters

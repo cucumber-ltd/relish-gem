@@ -5,30 +5,22 @@ module Relish
   module Command
     class Projects < Base
       
-      def default; list end
+      command :default => :list
       
-      def list
+      command :list do
         response = resource['projects'].get(
-          :params => {:api_token => api_token}, :accept => :json
+          :params => {:api_token => api_token}, 
+          :accept => :json
         )
         puts format(response)
-      rescue RestClient::Exception => exception
-        warn exception.response
-        exit exception.http_code
       end
       
-      def add
+      command :add do
         puts resource['projects'].post(:handle => @param)
-      rescue RestClient::Exception => exception
-        warn exception.response
-        exit 1
       end
       
-      def remove
+      command :remove do
         puts resource["projects/#{@param}"].delete
-      rescue RestClient::Exception => exception
-        warn exception.response
-        exit 1
       end
       
     private

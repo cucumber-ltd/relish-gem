@@ -17,6 +17,28 @@ module Relish
         option_names_to_display << name unless options[:display] == false
       end
       
+      def command(arg, &block)
+        
+        case arg
+        when Hash
+          name, alias_target = arg.to_a.flatten
+          block = lambda { self.send(alias_target) }
+        when Symbol
+          name = arg
+        else
+          raise ArgumentError
+        end
+        
+        define_method(name) do
+          begin
+            instance_exec(&block)
+          rescue RestClient::Exception => exception
+            warn exception.response
+            exit 1
+          end
+        end
+      end
+      
       def option_names
         @@option_names ||= []
       end

@@ -13,7 +13,7 @@ module Relish
         end
       end
       
-      def default
+      command :default do
         puts "This is the prefunctory help message for the relish gem."
 
         puts "Commands:"
@@ -23,6 +23,8 @@ module Relish
           puts message
         end
       end
+      
+    private
       
       def max_command_length
         Help.command_help.keys.map { |c| c.to_s.length }.max

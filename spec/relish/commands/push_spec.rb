@@ -12,51 +12,6 @@ module Relish
           push.default
         end
       end
-      
-      describe '#parameters' do
-        before { push.should_receive(:project).and_return('rspec') }
-        
-        context 'without version' do 
-          let(:push) { described_class.new }
-          
-          specify do
-            push.parameters.should eq("project_id=rspec")
-          end
-        end
-        
-        context 'with version' do
-          let(:push) { described_class.new(['--version', 'one']) }
-          
-          specify do
-            push.parameters.should eq("project_id=rspec&version_id=one")
-          end
-        end
-      end
-      
-      describe '#version' do
-        context 'with --version passed in command line' do
-          let(:push) { described_class.new(['--version', 'one']) }
-          specify { push.version.should eq('one') }
-        end
-        
-        context 'with --version not passed in command line' do
-          let(:push) { described_class.new }
-          specify { push.version.should be_nil }
-        end
-      end
-      
-      describe '#files_as_tar_gz' do
-        let(:push) { described_class.new }
-        specify { expect { push.files_as_tar_gz }.to_not raise_exception }
-        specify { push.files_as_tar_gz.should be_a(String) }
-      end
-      
-      describe '#files' do
-        let(:push) { described_class.new }
-        specify { expect { push.files }.to_not raise_exception }
-        specify { push.files.should be_a(Array) }
-      end
-      
     end
   end
 end

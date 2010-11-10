@@ -2,11 +2,9 @@ module Relish
   module Command
     class Config < Base
       
-      def default
-        show
-      end
+      command :default => :show
       
-      def show
+      command :show do
         puts(if File.exists?(Relish.local_options_file)
           IO.read(Relish.local_options_file)
         else
@@ -14,7 +12,7 @@ module Relish
         end)
       end
       
-      def add
+      command :add do
         OptionsFile.new(Relish.local_options_file).store(@cli_options)
       end
       
