@@ -13,10 +13,10 @@ module Relish
     # Store the given options into the file. Existing options with the same keys
     # will be overwritten.
     def store(options)
-      new_options = self.options.merge(options)
+      @options = self.options.merge(options)
       FileUtils.touch(@path)
       File.open(@path, 'w') do |file|
-        YAML.dump(new_options, file)
+        YAML.dump(@options, file)
       end
     end
     
