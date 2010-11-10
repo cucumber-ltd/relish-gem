@@ -76,11 +76,11 @@ module Relish
       end
       
       def global_options_file
-        @global_options ||= OptionsFile.new(Relish.global_options_file)
+        OptionsFile.new(Relish.global_options_file)
       end
 
       def local_options_file
-        @local_options ||= OptionsFile.new(Relish.local_options_file)
+        OptionsFile.new(Relish.local_options_file)
       end
       
       def ui
