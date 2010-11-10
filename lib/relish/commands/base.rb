@@ -47,7 +47,9 @@ module Relish
       end
       
       def resource(options = {})
-        RestClient::Resource.new(url, {:user => api_token, :password => 'X'}.merge(options))
+        options[:user] ||= api_token
+        options[:password] ||= 'X'
+        RestClient::Resource.new(url, options)
       end
       
       def clean_args(args)
