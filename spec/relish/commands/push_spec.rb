@@ -14,18 +14,13 @@ module Relish
       end
       
       describe '#parameters' do
-        before do
-          push.should_receive(:project).and_return('rspec')
-          push.should_receive(:api_token).and_return('abc')
-        end
+        before { push.should_receive(:project).and_return('rspec') }
         
         context 'without version' do 
           let(:push) { described_class.new }
           
           specify do
-            push.parameters.should eq(
-              "project_id=rspec&api_token=abc"
-            )
+            push.parameters.should eq("project_id=rspec")
           end
         end
         
@@ -33,9 +28,7 @@ module Relish
           let(:push) { described_class.new(['--version', 'one']) }
           
           specify do
-            push.parameters.should eq(
-              "project_id=rspec&version_id=one&api_token=abc"
-            )
+            push.parameters.should eq("project_id=rspec&version_id=one")
           end
         end
       end

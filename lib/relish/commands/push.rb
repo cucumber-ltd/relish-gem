@@ -30,9 +30,8 @@ module Relish
       
       def parameters
         "".tap do |str|
-          str << "project_id=#{project}&"
-          str << "version_id=#{version}&" if version
-          str << "api_token=#{api_token}"
+          str << "project_id=#{project}"
+          str << "&version_id=#{version}" if version
         end
       end
       

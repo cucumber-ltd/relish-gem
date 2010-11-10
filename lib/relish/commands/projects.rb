@@ -18,14 +18,14 @@ module Relish
       end
       
       def add
-        puts resource['projects'].post(:api_token => api_token, :handle => @param)
+        puts resource['projects'].post(:handle => @param)
       rescue RestClient::Exception => exception
         warn exception.response
         exit 1
       end
       
       def remove
-        puts resource["projects/#{@param}?api_token=#{api_token}"].delete
+        puts resource["projects/#{@param}"].delete
       rescue RestClient::Exception => exception
         warn exception.response
         exit 1
