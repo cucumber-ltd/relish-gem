@@ -15,13 +15,13 @@ module Relish
         puts format(response)
       end
       
-      usage   'projects:add <organization_or_user_handle>/<project_handle>'
+      usage   'projects:add <org_or_user_handle>/<project_handle>'
       desc    'add a project'
       command :add do
         puts resource['projects'].post(:handle => @param)
       end
       
-      usage   'projects:remove <organization_or_user_handle>/<project_handle>'
+      usage   'projects:remove <org_or_user_handle>/<project_handle>'
       desc    'remove a project'
       command :remove do
         puts resource["projects/#{@param}"].delete

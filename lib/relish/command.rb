@@ -1,4 +1,5 @@
 require 'relish'
+require 'relish/helpers'
 require 'relish/commands/base'
 require 'relish/commands/push'
 require 'relish/commands/config'
@@ -8,6 +9,8 @@ require 'relish/commands/help'
 module Relish
   module Command
     
+    extend Relish::Helpers
+    
     def self.run(command, args)
       command_class, method = get_command_and_method(command, args)      
       command_class.new(args).send(method)
@@ -16,6 +19,8 @@ module Relish
     def self.get_command_and_method(command, args)
       command_class, method = command.split(':')
       return Relish::Command.const_get(command_class.capitalize), (method || :default)
+    rescue NameError
+      error "Unknown command. Run 'relish help' for usage information."
     end
     
   end
