@@ -9,18 +9,31 @@ require 'relish/commands/help'
 module Relish
   module Command
     
-    extend Relish::Helpers
+    class << self
+      include Relish::Helpers
+      
+      def run(command, args)
+        command_class, method = get_command_and_method(command, args)      
+        command_class.new(args).send(method)
+      end
     
-    def self.run(command, args)
-      command_class, method = get_command_and_method(command, args)      
-      command_class.new(args).send(method)
-    end
+      def get_command_and_method(command, args)
+        command_class, method = command.split(':')
+        return get_command(command_class.capitalize), get_method(method)
+      rescue NameError
+        error "Unknown command. Run 'relish help' for usage information."
+      end
+      
+    private
     
-    def self.get_command_and_method(command, args)
-      command_class, method = command.split(':')
-      return Relish::Command.const_get(command_class.capitalize), (method || :default)
-    rescue NameError
-      error "Unknown command. Run 'relish help' for usage information."
+      def get_command(command)
+        Relish::Command.const_get(command)
+      end
+      
+      def get_method(method)
+        method || :default
+      end
+      
     end
     
   end
