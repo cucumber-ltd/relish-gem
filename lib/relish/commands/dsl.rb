@@ -1,4 +1,4 @@
-require 'relish/commands/dsl/base'
+require 'relish/commands/dsl/context_class'
 require 'relish/commands/dsl/option'
 require 'relish/commands/dsl/command'
 require 'relish/commands/dsl/help_text'

@@ -1,10 +1,11 @@
 module Relish
   module Command
     module Dsl
-      class Command < Base
+      class Command
+        include ContextClass
         
         def define(name, &block)
-          context_eval do
+          context_class_eval do
             define_method(name) do
               begin
                 instance_exec(&block)
@@ -14,7 +15,7 @@ module Relish
               end
             end
           end
-          HelpText.add(name, context_name)
+          HelpText.add(name, context_class_name)
         end
         
       end

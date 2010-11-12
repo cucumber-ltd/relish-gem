@@ -5,6 +5,8 @@ module Relish
     module Dsl
       describe Option do
         
+        it_should_behave_like 'a Dsl that utilizes ContextClass'
+        
         describe '#define' do
           let(:context_class) { Class.new }
           let(:option) { described_class.new(context_class) }

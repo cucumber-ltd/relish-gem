@@ -1,13 +1,14 @@
 module Relish
   module Command
     module Dsl
-      class Option < Base
+      class Option
+        include ContextClass
         
         def define(name, options = {})
           name = name.to_s
           default_proc = options[:default] || Proc.new {}
 
-          context_eval do
+          context_class_eval do
             define_method(name) do
               cli_options[name] ||
               local_options_file[name] ||
