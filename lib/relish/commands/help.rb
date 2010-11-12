@@ -3,31 +3,26 @@ require 'yaml'
 module Relish
   module Command
     class Help < Base
-      class << self
-        def for_command(command, help)
-          command_help[command] = help
-        end
-        
-        def command_help
-          @command_help ||= {}
-        end
-      end
       
+      desc    'show this usage'
       command :default do
-        puts "This is the prefunctory help message for the relish gem."
+        puts "=== Available Commands\n\n"
 
-        puts "Commands:"
-        Help.command_help.each do |command, help|
-          message = "relish #{command}".ljust(max_command_length) + 
-                    " # " + help
-          puts message
+        Dsl::HelpText.commands.each do |command, list|
+          list.each do |hash|
+            usage, description = *hash.to_a.flatten
+            usage = command if usage == 'default'
+            puts "#{usage.ljust(max_command_length)} # #{description}"
+          end
         end
       end
       
     private
       
       def max_command_length
-        Help.command_help.keys.map { |c| c.to_s.length }.max
+        Dsl::HelpText.commands.values.map {|v|
+          v.map {|v| v.keys.to_s.length }.max
+        }.max
       end
     end
   end

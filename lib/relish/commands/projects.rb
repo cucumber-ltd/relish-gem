@@ -5,20 +5,24 @@ module Relish
   module Command
     class Projects < Base
       
+      desc    'list your projects'
       command :default => :list
       
+      usage   'projects:list'
+      desc    'list your projects'
       command :list do
-        response = resource['projects'].get(
-          :params => {:api_token => api_token}, 
-          :accept => :json
-        )
+        response = resource['projects'].get(:accept => :json)
         puts format(response)
       end
       
+      usage   'projects:add <organization_or_user_handle>/<project_handle>'
+      desc    'add a project'
       command :add do
         puts resource['projects'].post(:handle => @param)
       end
       
+      usage   'projects:remove <organization_or_user_handle>/<project_handle>'
+      desc    'remove a project'
       command :remove do
         puts resource["projects/#{@param}"].delete
       end

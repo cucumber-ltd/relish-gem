@@ -57,19 +57,13 @@ module Relish
       end
       
       def valid_option_names
-        self.class.option_names
-      end
-      
-      def option_names_to_display
-        self.class.option_names_to_display
+        Dsl::Option.names
       end
       
       def validate_cli_options
         @cli_options.keys.each do |option|
           unless valid_option_names.include?(option.to_s)
-            puts "#{option} is not a valid option.\n" +
-                 "Valid options are: #{option_names_to_display.sort.join(', ')}"
-                  
+            puts "#{option} is not a valid option."
             exit 1
           end
         end

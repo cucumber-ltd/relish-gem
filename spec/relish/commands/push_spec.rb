@@ -7,11 +7,12 @@ module Relish
       describe '#default' do
         let(:push) { described_class.new }
         
-        it 'calls #run' do
-          push.should_receive(:run)
+        it 'calls #post' do
+          push.should_receive(:post)
           push.default
         end
       end
+      
     end
   end
 end

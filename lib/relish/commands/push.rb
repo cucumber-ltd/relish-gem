@@ -6,15 +6,12 @@ require 'rest_client'
 require 'relish/commands/help'
 
 module Relish
-  module Command
-    Help.for_command(:push, "push your features to relishapp.com")
-    
+  module Command    
     class Push < Base
       option :version
       
-      command :default => :run
-
-      command :run do
+      desc    'push your features to relishapp.com'
+      command :default do
         post files_as_tar_gz
       end
       
