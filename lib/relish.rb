@@ -1,3 +1,5 @@
+require 'relish/core_ext'
+
 module Relish
   class << self
     

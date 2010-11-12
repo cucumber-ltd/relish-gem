@@ -18,7 +18,7 @@ module Relish
       usage   'projects:add <org_or_user_handle>/<project_handle>'
       desc    'add a project'
       command :add do
-        puts resource['projects'].post(:handle => @param)
+        puts resource['projects'].post(:handle => handle, :private => private?)
       end
       
       usage   'projects:remove <org_or_user_handle>/<project_handle>'
@@ -35,6 +35,14 @@ module Relish
           result << " (private)" if hash['project']['private']
           result
         end.join("\n")
+      end
+      
+      def handle
+        @param.remove_option
+      end
+      
+      def private?
+        @param.extract_option == 'private'
       end
             
     end
