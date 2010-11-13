@@ -1,5 +1,3 @@
-require 'yaml'
-
 module Relish
   module Command
     class Help < Base

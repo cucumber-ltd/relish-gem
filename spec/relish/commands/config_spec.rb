@@ -4,16 +4,8 @@ module Relish
   module Command
     describe Config do
       
-      describe '#default' do
-        let(:config) { described_class.new }
-        
-        it 'calls #show' do
-          config.should_receive(:show)
-          config.default
-        end
-      end
       
-      describe '#show' do
+      describe '#default' do
         let(:config) { described_class.new }
         
         context 'with a local options file' do
@@ -24,14 +16,14 @@ module Relish
           
           it 'outputs the contents' do
             config.should_receive(:puts).with('options')
-            config.show
+            config.default
           end
         end
         
         context 'without a local options file' do
           it 'outputs the correct message' do
             config.should_receive(:puts).with('No .relish file exists')
-            config.show
+            config.default
           end
         end
       end

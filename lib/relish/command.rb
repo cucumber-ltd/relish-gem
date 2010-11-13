@@ -1,10 +1,11 @@
 require 'relish'
 require 'relish/helpers'
 require 'relish/commands/base'
-require 'relish/commands/push'
+require 'relish/commands/collab'
 require 'relish/commands/config'
-require 'relish/commands/projects'
 require 'relish/commands/help'
+require 'relish/commands/projects'
+require 'relish/commands/push'
 
 module Relish
   module Command

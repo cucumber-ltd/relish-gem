@@ -1,22 +1,16 @@
-require 'rubygems'
-require 'json'
-
 module Relish
   module Command
     class Projects < Base
-      
+
       desc    'list your projects'
-      command :default => :list
-      
-      usage   'projects:list'
-      desc    'list your projects'
-      command :list do
-        response = resource['projects'].get(:accept => :json)
-        puts format(response)
+      command :default do
+        puts format(resource['projects'].get(:accept => :json))
       end
       
       usage   'projects:add <org_or_user_handle>/<project_handle>'
-      desc    "add a project\nappend :private to make the project private\nexample: relish projects:add rspec/rspec-core:private"
+      desc    ['add a project',
+               'append :private to make the project private',
+               'example: relish projects:add rspec/rspec-core:private'].join("\n")
       command :add do
         puts resource['projects'].post(:handle => handle, :private => private?)
       end
@@ -29,12 +23,11 @@ module Relish
       
     private
       def format(response)
-        json = JSON.parse(response)
-        json.map do |hash| 
+        json_parse(response) do |hash| 
           result = hash['project']['full_handle']
           result << " (private)" if hash['project']['private']
           result
-        end.join("\n")
+        end
       end
       
       def handle

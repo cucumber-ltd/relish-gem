@@ -1,4 +1,5 @@
 require 'yaml'
+require 'json'
 require 'relish/ui'
 require 'relish/options_file'
 require 'relish/commands/dsl'
@@ -79,6 +80,14 @@ module Relish
       
       def ui
         @ui ||= Ui.new
+      end
+      
+      def json_parse(response, &block)
+        JSON.parse(response).inject([]) do |parsed_output, hash|
+          parsed_output << block.call(hash)
+        end.join("\n")
+      rescue JSON::ParserError
+        response
       end
       
     end
