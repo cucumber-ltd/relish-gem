@@ -20,6 +20,8 @@ Feature: Help
       projects                                              # list your projects
       projects:list                                         # list your projects
       projects:add <org_or_user_handle>/<project_handle>    # add a project
+                                                            # append :private to make the project private
+                                                            # example: relish projects:add rspec/rspec-core:private
       projects:remove <org_or_user_handle>/<project_handle> # remove a project
       push                                                  # push features to relishapp.com
       

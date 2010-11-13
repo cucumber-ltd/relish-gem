@@ -34,6 +34,12 @@ module Relish
           def clear_commands
             @commands = {}
           end
+          
+          def max_usage_length
+            commands.values.map {|v|
+              v.map {|v| v.keys.to_s.length }.max
+            }.max
+          end
         end
         
       end

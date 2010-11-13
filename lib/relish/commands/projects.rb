@@ -16,7 +16,7 @@ module Relish
       end
       
       usage   'projects:add <org_or_user_handle>/<project_handle>'
-      desc    'add a project'
+      desc    "add a project\nappend :private to make the project private\nexample: relish projects:add rspec/rspec-core:private"
       command :add do
         puts resource['projects'].post(:handle => handle, :private => private?)
       end
