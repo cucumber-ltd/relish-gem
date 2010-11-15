@@ -4,6 +4,7 @@ require 'relish/ui'
 require 'relish/helpers'
 require 'relish/options_file'
 require 'relish/commands/dsl'
+require 'relish/commands/param_methods'
 
 module Relish
   module Command
@@ -19,7 +20,7 @@ module Relish
             
       def initialize(args = [])
         @args = clean_args(args)
-        @param = get_param
+        @param = get_param.extend(ParamMethods)
         @cli_options = Hash[*@args]
 
         validate_cli_options
