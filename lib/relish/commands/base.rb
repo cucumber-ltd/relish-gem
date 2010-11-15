@@ -1,15 +1,16 @@
 require 'yaml'
 require 'json'
 require 'relish/ui'
+require 'relish/helpers'
 require 'relish/options_file'
 require 'relish/commands/dsl'
 
 module Relish
   module Command
     class Base
+      include Relish::Helpers
       extend Dsl
       
-      option :project
       option :api_token, :default => lambda { get_and_store_api_token }
       option :host,      :default => lambda { Relish.default_host }, :display => false
       
@@ -33,6 +34,14 @@ module Relish
       end
 
     private
+    
+      def project
+        if @param and @param.without_option
+          @param.without_option
+        else
+          merged_options['project'] || error('You must specify a project.')
+        end
+      end
 
       def get_and_store_api_token
         api_token = get_api_token
@@ -62,12 +71,16 @@ module Relish
       end
       
       def validate_cli_options
-        @cli_options.keys.each do |option|
+        cli_options.keys.each do |option|
           unless valid_option_names.include?(option.to_s)
             puts "#{option} is not a valid option."
             exit 1
           end
         end
+      end
+      
+      def merged_options
+        @merged_options ||= global_options_file.merge(local_options_file)
       end
       
       def global_options_file

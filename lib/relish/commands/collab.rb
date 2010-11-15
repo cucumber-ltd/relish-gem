@@ -29,10 +29,6 @@ module Relish
         "projects/#{project}/memberships"
       end
       
-      def project
-        @param ? @param.without_option : super()
-      end
-      
       def handle_or_email
         @param.extract_option
       end

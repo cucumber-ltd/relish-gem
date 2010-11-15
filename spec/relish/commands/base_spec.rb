@@ -3,40 +3,6 @@ require 'spec_helper'
 module Relish
   module Command
     describe Base do
-    
-      describe "#project" do
-        context 'passed in command line' do
-          let(:base) { described_class.new(["--project", 'rspec-core']) }
-        
-          it 'returns the value' do
-            base.project.should eq('rspec-core')
-          end
-        end
-        
-        context 'contained in the local options file' do
-          let(:base) { described_class.new }
-          
-          before do
-            OptionsFile.stub(:new).with(
-              Relish.local_options_file
-            ).and_return({'project' => 'rspec-core'})
-          end
-          
-          it 'returns the value' do
-            base.project.should eq('rspec-core')
-          end
-        end
-      
-        context 'not passed in command line' do
-          let(:base) { described_class.new }
-        
-          context 'and options file does not exist' do
-            it 'returns nil' do
-              base.project.should be_nil
-            end
-          end
-        end
-      end
       
       describe '#url' do
         context 'host passed in command line' do

@@ -28,6 +28,10 @@ module Relish
       options == other
     end
     
+    def merge(other)
+      options.merge(other.options)
+    end
+    
     # Stored options as a hash
     def options
       @options ||= current_options
