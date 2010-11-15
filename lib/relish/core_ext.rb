@@ -1,11 +1,11 @@
 module Relish
   module StringExtensions
     def extract_option
-      split(':')[1]
+      include?(':') ? split(':')[1] : self
     end
     
-    def remove_option
-      split(':')[0]
+    def without_option
+      split(':')[0] if include?(':')
     end
   end
 end

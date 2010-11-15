@@ -26,7 +26,11 @@ module Relish
     private
     
       def resource_path
-        "projects/#{@param.remove_option}/memberships"
+        "projects/#{project}/memberships"
+      end
+      
+      def project
+        @param ? @param.without_option : super()
       end
       
       def handle_or_email
