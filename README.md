@@ -1,1 +1,1 @@
-Hello
+Run `relish help` to view the available commands.
