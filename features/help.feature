@@ -27,7 +27,7 @@ Feature: Help
       projects:add <org_or_user_handle>/<project_handle>     # add a project
                                                              # append :private to make the project private
                                                              # example: relish projects:add rspec/rspec-core:private
-      projects:remove <org_or_user_handle>/<project_handle>  # remove a project
+      projects:remove <project_handle>                       # remove a project
       push <project>                                         # push features to relishapp.com
       collab                                                 # list the collaborators for a project
       collab:add <project>:<collaborator_handle_or_email>    # add a collaborator to a project

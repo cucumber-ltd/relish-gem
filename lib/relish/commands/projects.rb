@@ -15,7 +15,7 @@ module Relish
         puts resource['projects'].post(:handle => handle, :private => private?)
       end
       
-      usage   'projects:remove <org_or_user_handle>/<project_handle>'
+      usage   'projects:remove <project_handle>'
       desc    'remove a project'
       command :remove do
         puts resource["projects/#{@param}"].delete
