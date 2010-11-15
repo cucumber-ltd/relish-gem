@@ -30,7 +30,7 @@ module Relish
       end
       
       def resource_path_for_option
-        resource_path(@param && @param.has_option? ? @param.without_option : project)
+        resource_path(@param.extract_project_handle || project)
       end
       
       def resource_path(project)
