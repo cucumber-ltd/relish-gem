@@ -8,6 +8,7 @@ module Relish
     class Push < Base
       option :version
       
+      usage   'push <project>'
       desc    'push features to relishapp.com'
       command :default do
         post files_as_tar_gz

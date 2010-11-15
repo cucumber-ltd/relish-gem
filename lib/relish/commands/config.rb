@@ -1,22 +1,6 @@
 module Relish
   module Command
     class Config < Base
-
-      desc    'display the contents of your options file'
-      command :default do
-        puts(if File.exists?(Relish.local_options_file)
-          IO.read(Relish.local_options_file)
-        else
-          "No #{Relish.local_options_file} file exists"
-        end)
-      end
-      
-      usage   'config:add <option>:<value>'
-      desc    'add a configuration option to your options file'
-      command :add do
-        option = Option.new(@param)
-        OptionsFile.new(Relish.local_options_file).store(option.to_hash)
-      end
       
       class Option
         VALID_OPTIONS = %w(project)
@@ -36,7 +20,24 @@ module Relish
         def to_hash
           {@option => @value}
         end
-            
+      end
+
+      desc    'display the contents of your options file'
+      command :default do
+        puts(if File.exists?(Relish.local_options_file)
+          IO.read(Relish.local_options_file)
+        else
+          "No #{Relish.local_options_file} file exists"
+        end)
+      end
+      
+      usage   'config:add <option>:<value>'
+      desc    ['add a configuration option to your options file',
+               'example: relish config:add project:rspec-core',
+               "valid configuration options: #{Option::VALID_OPTIONS.join(', ')}"]
+      command :add do
+        option = Option.new(@param)
+        OptionsFile.new(Relish.local_options_file).store(option.to_hash)
       end
       
     end

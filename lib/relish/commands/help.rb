@@ -4,6 +4,16 @@ module Relish
       
       desc 'show this usage'
       command :default do
+        puts <<-TEXT
+A <project> can be scoped by an organization or user handle. For
+example, if an organiztion (rspec) has a project (rspec-core), then
+the <project> would be `rspec/rspec-core`. If a user (justin) has a
+project (my-project), then <project> would be `justin/my-project`.
+
+If you leave off the organization or user handle, then it defaults
+to the user (you).
+
+        TEXT
         puts "=== Available Commands\n\n"
         Dsl::HelpText.commands.each do |command, list|
           list.each {|hash| Formatter.new(command, hash).format }

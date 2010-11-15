@@ -12,12 +12,13 @@ module Relish
         Option.names << name.to_s
       end
       
-      def usage(str)
-        HelpText.next_usage = str
+      def usage(text)
+        HelpText.next_usage = text
       end
       
-      def desc(str)
-        HelpText.next_description = str
+      def desc(text)
+        text = text.join("\n") if text.is_a?(Array)
+        HelpText.next_description = text
       end
       
       def command(arg, &block)
