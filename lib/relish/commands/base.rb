@@ -36,11 +36,7 @@ module Relish
     private
     
       def project
-        if @param and @param.without_option
-          @param.without_option
-        else
-          merged_options['project'] || error('You must specify a project.')
-        end
+        merged_options['project'] || error('You must specify a project.')
       end
 
       def get_and_store_api_token
@@ -73,8 +69,7 @@ module Relish
       def validate_cli_options
         cli_options.keys.each do |option|
           unless valid_option_names.include?(option.to_s)
-            puts "#{option} is not a valid option."
-            exit 1
+            error "'#{option}' is not a valid option."
           end
         end
       end

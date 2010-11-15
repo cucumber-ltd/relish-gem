@@ -5,6 +5,7 @@ module Relish
       $stderr.puts(message)
       exit 1
     end
+    module_function :error
     
   end
 end

@@ -5,7 +5,11 @@ module Relish
     end
     
     def without_option
-      split(':')[0] if include?(':')
+      split(':')[0]
+    end
+    
+    def has_option?
+      include?(':')
     end
   end
 end

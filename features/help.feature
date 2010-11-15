@@ -12,7 +12,7 @@ Feature: Help
 
       help                                                                               # show this usage
       config                                                                             # display the contents of your options file
-      config:add --<option> <value>                                                      # add a configuration option to your options file
+      config:add <option>:<value>                                                        # add a configuration option to your options file
       projects                                                                           # list your projects
       projects:add <org_or_user_handle>/<project_handle>                                 # add a project
                                                                                          # append :private to make the project private

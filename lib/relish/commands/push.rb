@@ -28,6 +28,10 @@ module Relish
         end
       end
       
+      def project
+        @param || super()
+      end
+      
       def files_as_tar_gz
         stream = StringIO.new
         begin

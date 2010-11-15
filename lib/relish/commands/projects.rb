@@ -31,7 +31,7 @@ module Relish
       end
       
       def handle
-        @param.remove_option
+        @param.without_option
       end
       
       def private?
