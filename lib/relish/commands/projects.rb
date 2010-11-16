@@ -18,10 +18,11 @@ module Relish
       usage   'projects:remove <project_handle>'
       desc    'remove a project'
       command :remove do
-        puts resource["projects/#{@param}"].delete
+        puts resource["projects/#{handle}"].delete
       end
       
     private
+    
       def format(response)
         json_parse(response) do |hash| 
           result = hash['project']['full_handle']
@@ -31,7 +32,7 @@ module Relish
       end
       
       def handle
-        @param.without_option
+        @param ? @param.without_option : error('Please specify a project.')
       end
       
       def private?
