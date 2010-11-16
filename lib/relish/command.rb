@@ -1,5 +1,6 @@
 require 'relish'
 require 'relish/helpers'
+require 'relish/error_messages'
 require 'relish/commands/base'
 require 'relish/commands/collab'
 require 'relish/commands/config'
@@ -22,7 +23,7 @@ module Relish
         command_class, method = command.split(':')
         return get_command(command_class.capitalize), get_method(method)
       rescue NameError
-        error "Unknown command. Run 'relish help' for usage information."
+        error ErrorMessages.unknown_command
       end
       
     private

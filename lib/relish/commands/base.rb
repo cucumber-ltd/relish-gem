@@ -1,10 +1,11 @@
 require 'yaml'
 require 'json'
-require 'relish/ui'
+require 'relish/error_messages'
 require 'relish/helpers'
 require 'relish/options_file'
+require 'relish/param_methods'
+require 'relish/ui'
 require 'relish/commands/dsl'
-require 'relish/commands/param_methods'
 
 module Relish
   module Command
@@ -37,7 +38,7 @@ module Relish
     private
     
       def project
-        merged_options['project'] || error('You must specify a project.')
+        merged_options['project'] || error(ErrorMessages.project_blank)
       end
 
       def get_and_store_api_token

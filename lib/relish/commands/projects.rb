@@ -12,13 +12,13 @@ module Relish
                'append :private to make the project private',
                'example: relish projects:add rspec/rspec-core:private']
       command :add do
-        puts resource['projects'].post(:handle => handle, :private => private?)
+        puts resource['projects'].post(:handle => handle_to_add, :private => private?)
       end
       
       usage   'projects:remove <project_handle>'
       desc    'remove a project'
       command :remove do
-        puts resource["projects/#{handle}"].delete
+        puts resource["projects/#{handle_to_remove}"].delete
       end
       
     private
@@ -31,8 +31,16 @@ module Relish
         end
       end
       
+      def handle_to_add
+        handle || error(ErrorMessages.project_blank)
+      end
+      
+      def handle_to_remove
+        handle || project
+      end
+      
       def handle
-        @param ? @param.without_option : error('Please specify a project.')
+        @param.without_option if @param
       end
       
       def private?
