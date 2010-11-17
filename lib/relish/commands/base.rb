@@ -14,7 +14,7 @@ module Relish
       extend Dsl
       
       option :api_token, :default => lambda { get_and_store_api_token }
-      option :host,      :default => lambda { Relish.default_host }, :display => false
+      option :host,      :default => lambda { Relish.default_host }
       
       attr_writer :args
       attr_reader :cli_options

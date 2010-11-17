@@ -10,6 +10,14 @@ module Relish
         )
       end
     end
+    
+    describe '#handle_is_blank' do
+      specify do
+        described_class.handle_is_blank.should eq(
+          "Please specify a new handle. Run 'relish help' for usage information."
+        )
+      end
+    end
   
     describe '#unknown_command' do
       specify do

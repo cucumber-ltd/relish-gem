@@ -24,15 +24,19 @@ Feature: Help
                                                              # example: relish config:add project:rspec-core
                                                              # valid configuration options: project
       projects                                               # list your projects
-      projects:add <org_or_user_handle>/<project_handle>     # add a project
+      projects:add <org or user handle>/<project handle>     # add a project
                                                              # append :private to make the project private
                                                              # example: relish projects:add rspec/rspec-core:private
-      projects:remove <project_handle>                       # remove a project
+      projects:remove <project handle>                       # remove a project
+      projects:visibility <project>:<public or private>      # set the status of a project
+                                                             # example: relish projects:visibility rspec/rspec-core:private
+      projects:rename <project>:<new handle>                 # rename a project's handle
+                                                             # example: relish projects:rename rspec/rspec-core:rspec-corez
       push <project>                                         # push features to relishapp.com
       collab                                                 # list the collaborators for a project
-      collab:add <project>:<collaborator_handle_or_email>    # add a collaborator to a project
+      collab:add <project>:<collaborator handle or email>    # add a collaborator to a project
                                                              # example: relish collab:add rspec/rspec-core:justin
-      collab:remove <project>:<collaborator_handle_or_email> # remove a collaborator from a project
+      collab:remove <project>:<collaborator handle or email> # remove a collaborator from a project
                                                              # example: relish collab:remove rspec/rspec-core:justin
       
       """
