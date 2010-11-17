@@ -46,7 +46,7 @@ module Relish
       end
       
       def handle_to_add
-        handle || error(ErrorMessages.project_blank)
+        handle || error(:project_blank)
       end
       alias_method :handle_to_update, :handle_to_add
       
@@ -59,7 +59,7 @@ module Relish
       end
       
       def rename_handle
-        @param.has_option? ? @param.extract_option : error(ErrorMessages.handle_is_blank)
+        @param.has_option? ? @param.extract_option : error(:handle_is_blank)
       end
       
       def private?

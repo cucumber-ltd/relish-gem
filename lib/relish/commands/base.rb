@@ -38,7 +38,7 @@ module Relish
     private
     
       def project
-        merged_options['project'] || error(ErrorMessages.project_blank)
+        merged_options['project'] || error(:project_blank)
       end
 
       def get_and_store_api_token
