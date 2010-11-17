@@ -100,6 +100,10 @@ module Relish
         response
       end
       
+      def escape(str)
+        CGI.escape(str)
+      end
+      
     end
   end
 end

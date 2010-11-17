@@ -32,7 +32,7 @@ module Relish
       end
       
       def resource_path(project)
-        "projects/#{project}/memberships"
+        "projects/#{escape(project)}/memberships"
       end
       
       def handle_or_email
