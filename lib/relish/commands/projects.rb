@@ -15,24 +15,28 @@ module Relish
         puts resource['projects'].post(:handle => handle_to_add, :private => private?)
       end
       
-      usage   'projects:remove <project handle>'
+      usage   'projects:remove <project>'
       desc    'remove a project'
       command :remove do
-        puts resource["projects/#{handle_to_remove}"].delete
+        puts resource["projects/#{escape(handle_to_remove)}"].delete
       end
       
       usage   'projects:visibility <project>:<public or private>'
       desc    ['set the status of a project',
                'example: relish projects:visibility rspec/rspec-core:private']
       command :visibility do
-        puts resource["projects/#{handle_to_update}"].put(:project => {:private => private?})
+        puts resource["projects/#{escape(handle_to_update)}"].put(
+          :project => { :private => private? }
+        )
       end
       
       usage   'projects:rename <project>:<new handle>'
       desc    ["rename a project's handle",
                'example: relish projects:rename rspec/rspec-core:rspec-corez']
       command :rename do
-        puts resource["projects/#{handle_to_update}"].put(:project => {:handle => rename_handle})
+        puts resource["projects/#{escape(handle_to_update)}"].put(
+          :project => { :handle => rename_handle }
+        )
       end
       
     private

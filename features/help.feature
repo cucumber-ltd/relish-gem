@@ -27,7 +27,7 @@ Feature: Help
       projects:add <org or user handle>/<project handle>     # add a project
                                                              # append :private to make the project private
                                                              # example: relish projects:add rspec/rspec-core:private
-      projects:remove <project handle>                       # remove a project
+      projects:remove <project>                              # remove a project
       projects:visibility <project>:<public or private>      # set the status of a project
                                                              # example: relish projects:visibility rspec/rspec-core:private
       projects:rename <project>:<new handle>                 # rename a project's handle
