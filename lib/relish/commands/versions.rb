@@ -9,7 +9,7 @@ module Relish
         puts format(resource[resource_path_for_no_option].get(:accept => :json))
       end
 
-      usage   'versions:add <project>:<version name>'
+      usage   'versions:add <project>:<version>'
       desc    ['add a version to a project',
                'example: relish versions:add rspec/rspec-core:2.0']
       command :add do
@@ -18,7 +18,7 @@ module Relish
         )
       end
       
-      usage   'versions:remove <project>:<version name>'
+      usage   'versions:remove <project>:<version>'
       desc    ['remove a version from a project',
                'example: relish versions:remove rspec/rspec-core:2.0']
       command :remove do

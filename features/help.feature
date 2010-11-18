@@ -32,16 +32,19 @@ Feature: Help
                                                              # example: relish projects:visibility rspec/rspec-core:private
       projects:rename <project>:<new handle>                 # rename a project's handle
                                                              # example: relish projects:rename rspec/rspec-core:rspec-corez
-      push <project>                                         # push features to relishapp.com
+      push <project>:<version>                               # push features to relishapp.com
+                                                             # <version> is optional
+                                                             # example: relish push rspec/rspec-core
+                                                             # example: relish push rspec/rspec-core:2.0
       collab                                                 # list the collaborators for a project
       collab:add <project>:<collaborator handle or email>    # add a collaborator to a project
                                                              # example: relish collab:add rspec/rspec-core:justin
       collab:remove <project>:<collaborator handle or email> # remove a collaborator from a project
                                                              # example: relish collab:remove rspec/rspec-core:justin
       versions                                               # list the versions for a project
-      versions:add <project>:<version name>                  # add a version to a project
+      versions:add <project>:<version>                       # add a version to a project
                                                              # example: relish versions:add rspec/rspec-core:2.0
-      versions:remove <project>:<version name>               # remove a version from a project
+      versions:remove <project>:<version>                    # remove a version from a project
                                                              # example: relish versions:remove rspec/rspec-core:2.0
       
       """

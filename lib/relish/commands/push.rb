@@ -6,10 +6,12 @@ require 'rest_client'
 module Relish
   module Command    
     class Push < Base
-      option :version
       
-      usage   'push <project>'
-      desc    'push features to relishapp.com'
+      usage   'push <project>:<version>'
+      desc    ['push features to relishapp.com',
+               '<version> is optional',
+               'example: relish push rspec/rspec-core',
+               'example: relish push rspec/rspec-core:2.0']
       command :default do
         post files_as_tar_gz
       end
@@ -30,7 +32,11 @@ module Relish
       end
       
       def project
-        @param || super()
+        @param.without_option || super()
+      end
+      
+      def version
+        @param.extract_option if @param.has_option?
       end
       
       def files_as_tar_gz
