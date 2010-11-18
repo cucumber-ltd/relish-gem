@@ -11,10 +11,18 @@ module Relish
       end
     end
     
-    describe '#handle_is_blank' do
+    describe '#handle_blank' do
       specify do
-        described_class.handle_is_blank.should eq(
+        described_class.handle_blank.should eq(
           "Please specify a new handle. Run 'relish help' for usage information."
+        )
+      end
+    end
+    
+    describe '#version_blank' do
+      specify do
+        described_class.version_blank.should eq(
+          "Please specify a version name. Run 'relish help' for usage information."
         )
       end
     end

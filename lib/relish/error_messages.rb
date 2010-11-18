@@ -6,8 +6,12 @@ module Relish
       'Please specify a project.' + help
     end
     
-    def handle_is_blank
+    def handle_blank
       'Please specify a new handle.' + help
+    end
+    
+    def version_blank
+      'Please specify a version name.' + help
     end
   
     def unknown_command

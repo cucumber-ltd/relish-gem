@@ -63,7 +63,7 @@ module Relish
       end
       
       def rename_handle
-        @param.has_option? ? @param.extract_option : error(:handle_is_blank)
+        @param.has_option? ? @param.extract_option : error(:handle_blank)
       end
       
       def private?

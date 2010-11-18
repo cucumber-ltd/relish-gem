@@ -1,6 +1,8 @@
 module Relish
   module Command
     class Collab < Base
+      include ResourceMethods
+      resource_path :memberships
       
       desc    'list the collaborators for a project'
       command :default do
@@ -22,18 +24,6 @@ module Relish
       end
       
     private
-      
-      def resource_path_for_no_option
-        resource_path(@param || project)
-      end
-      
-      def resource_path_for_option
-        resource_path(@param.extract_project_handle || project)
-      end
-      
-      def resource_path(project)
-        "projects/#{escape(project)}/memberships"
-      end
       
       def handle_or_email
         @param.extract_option

@@ -1,12 +1,14 @@
 require 'relish'
 require 'relish/helpers'
 require 'relish/error_messages'
+require 'relish/resource_methods'
 require 'relish/commands/base'
 require 'relish/commands/collab'
 require 'relish/commands/config'
 require 'relish/commands/help'
 require 'relish/commands/projects'
 require 'relish/commands/push'
+require 'relish/commands/versions'
 
 module Relish
   module Command
@@ -23,7 +25,7 @@ module Relish
         command_class, method = command.split(':')
         return get_command(command_class.capitalize), get_method(method)
       rescue NameError
-        error ErrorMessages.unknown_command
+        error :unknown_command
       end
       
     private

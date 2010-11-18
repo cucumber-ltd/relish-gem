@@ -38,6 +38,11 @@ Feature: Help
                                                              # example: relish collab:add rspec/rspec-core:justin
       collab:remove <project>:<collaborator handle or email> # remove a collaborator from a project
                                                              # example: relish collab:remove rspec/rspec-core:justin
+      versions                                               # list the versions for a project
+      versions:add <project>:<version name>                  # add a version to a project
+                                                             # example: relish versions:add rspec/rspec-core:2.0
+      versions:remove <project>:<version name>               # remove a version from a project
+                                                             # example: relish versions:remove rspec/rspec-core:2.0
       
       """
       
