@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name = "relish"
-  s.version = "0.1.4"
+  s.version = "0.1.5"
 
   s.required_rubygems_version = '>= 1.3.5'
   s.authors = ["Matt Wynne", "Justin Ko"]
