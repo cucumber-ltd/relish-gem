@@ -10,6 +10,8 @@ require 'relish/commands/projects'
 require 'relish/commands/push'
 require 'relish/commands/versions'
 
+RestClient.proxy = ENV['http_proxy']
+
 module Relish
   module Command
     
