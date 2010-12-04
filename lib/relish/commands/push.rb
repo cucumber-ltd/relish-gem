@@ -32,7 +32,7 @@ module Relish
       end
       
       def project
-        @param.without_option || super()
+        (@param.without_option if @param) || super()
       end
       
       def version
