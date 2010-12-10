@@ -7,6 +7,8 @@ module Relish
   module Command    
     class Push < Base
       
+      FILE_TYPES = %w(feature nav md markdown)
+      
       usage   'push <project>:<version>'
       desc    ['push features to relishapp.com',
                '<version> is optional',
@@ -54,7 +56,7 @@ module Relish
       end
       
       def files
-        Dir['features/**/*.{feature,md,markdown}']
+        Dir["features/**/*.{#{FILE_TYPES.join(',')}}"]
       end
       
     end
