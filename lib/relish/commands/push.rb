@@ -6,9 +6,7 @@ require 'rest_client'
 module Relish
   module Command    
     class Push < Base
-      
-      FILE_TYPES = %w(feature nav md markdown)
-      
+            
       usage   'push <project>:<version>'
       desc    ['push features to relishapp.com',
                '<version> is optional',
@@ -56,7 +54,8 @@ module Relish
       end
       
       def files
-        Dir["features/**/*.{#{FILE_TYPES.join(',')}}"]
+        Dir["features/**/*.{feature,md,markdown}"] +
+        Dir["features/**/.nav"]
       end
       
     end
