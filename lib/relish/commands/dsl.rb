@@ -6,21 +6,20 @@ require 'relish/commands/dsl/help_text'
 module Relish
   module Command
     module Dsl
-      
+
       def option(name, options = {})
         Option.new(self).define(name, options)
         Option.names << name.to_s
       end
-      
+
       def usage(text)
         HelpText.next_usage = text
       end
-      
-      def desc(text)
-        text = text.join("\n") if text.is_a?(Array)
-        HelpText.next_description = text
+
+      def desc(*text)
+        HelpText.next_description = text.join("\n")
       end
-      
+
       def command(arg, &block)
         case arg
         when Hash
@@ -31,10 +30,10 @@ module Relish
         else
           raise ArgumentError
         end
-        
+
         Command.new(self).define(name, &block)
       end
-      
+
     end
   end
 end
