@@ -1,9 +1,9 @@
 @announce
 Feature: Help
-  
+
   The `relish help` command displays all available commands
   along with a description of each.
-  
+
   Scenario: View all available commands with the help command
     When I successfully run "relish help"
     Then the output should contain exactly:
@@ -15,7 +15,7 @@ Feature: Help
 
       If you leave off the organization or user handle, then it defaults
       to the user (you).
-      
+
       === Available Commands
 
       help                                                   # show this usage
@@ -32,10 +32,12 @@ Feature: Help
                                                              # example: relish projects:visibility rspec/rspec-core:private
       projects:rename <project>:<new handle>                 # rename a project's handle
                                                              # example: relish projects:rename rspec/rspec-core:rspec-corez
-      push <project>:<version>                               # push features to relishapp.com
+      push <project>:<version>                               # push features to a project
                                                              # <version> is optional
                                                              # example: relish push rspec/rspec-core
                                                              # example: relish push rspec/rspec-core:2.0
+      push:org <organization handle>                         # push markdown files to an organization
+                                                             # example: relish push:org rspec
       collab                                                 # list the collaborators for a project
       collab:add <project>:<collaborator handle or email>    # add a collaborator to a project
                                                              # example: relish collab:add rspec/rspec-core:justin
@@ -46,13 +48,13 @@ Feature: Help
                                                              # example: relish versions:add rspec/rspec-core:2.0
       versions:remove <project>:<version>                    # remove a version from a project
                                                              # example: relish versions:remove rspec/rspec-core:2.0
-      
+
       """
-      
+
   Scenario: Specifying no command runs the help command
     When I successfully run "relish"
     Then the output should contain "=== Available Commands"
-    
+
   Scenario: Specifying an unknown command gives an error message
     When I run "relish baloney"
     Then it should fail with:
