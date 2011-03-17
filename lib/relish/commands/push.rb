@@ -47,6 +47,7 @@ module Relish
       end
 
       def version
+        return unless @param
         @param.extract_option if @param.has_option?
       end
 
