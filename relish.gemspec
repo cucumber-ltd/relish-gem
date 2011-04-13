@@ -1,12 +1,12 @@
 Gem::Specification.new do |s|
   s.name = "relish"
-  s.version = "0.2.1"
+  s.version = "0.2.3"
 
   s.required_rubygems_version = '>= 1.3.5'
   s.authors = ["Matt Wynne", "Justin Ko"]
-  s.date = "2010-12-11"
+  s.date = "2011-04-13"
   s.description = %q{Client gem for http://relishapp.com}
-  s.email = "jko170@gmail.com"
+  s.email = "matt@mattwynne.net"
 
   s.homepage = "http://relishapp.com"
   s.rdoc_options = ["--charset=UTF-8"]
