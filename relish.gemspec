@@ -26,6 +26,8 @@ Gem::Specification.new do |s|
     s.add_runtime_dependency lib, version
   end
 
+  s.add_runtime_dependency('jruby-openssl') if RUBY_PLATFORM == 'java'
+
   {
     'bundler'             => '~> 1.0.0',
     'rake'                => '~> 0.8.7',
