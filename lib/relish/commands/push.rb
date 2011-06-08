@@ -7,9 +7,11 @@ module Relish
   module Command
     class Push < Base
 
-      usage   'push <project>:<version>'
+      usage   'push <project>:<version> [path <path>]'
+      option  :path, :default => Proc.new { 'features' }
       desc    'push features to a project',
               '<version> is optional',
+              '<path> is optional (defaults to ./features)',
               'example: relish push rspec/rspec-core',
               'example: relish push rspec/rspec-core:2.0'
       command :default do
@@ -66,8 +68,8 @@ module Relish
       end
 
       def files
-        Dir["features/**/*.{feature,md,markdown}"] +
-        Dir["features/**/.nav"]
+        Dir["#{path}/**/*.{feature,md,markdown}"] +
+        Dir["#{path}/**/.nav"]
       end
 
     end

@@ -70,6 +70,7 @@ module Relish
 
       def validate_cli_options
         cli_options.keys.each do |option|
+          
           unless valid_option_names.include?(option.to_s)
             error "'#{option}' is not a valid option."
           end
