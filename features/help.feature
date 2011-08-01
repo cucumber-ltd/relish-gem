@@ -1,4 +1,3 @@
-@announce
 Feature: Help
 
   The `relish help` command displays all available commands
