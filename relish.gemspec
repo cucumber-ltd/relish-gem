@@ -31,7 +31,7 @@ Gem::Specification.new do |s|
     'rake'                => '~> 0.8.7',
     'rspec'               => '~> 2.0.0',
     'cucumber'            => '~> 0.9.1',
-    'aruba'               => '~> 0.2.2',
+    'aruba'               => '~> 0.4.5',
     'fakeweb'             => '~> 1.3.0'
   }.each do |lib, version|
     s.add_development_dependency lib, version
