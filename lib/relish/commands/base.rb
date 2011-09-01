@@ -57,6 +57,7 @@ module Relish
       def resource(options = {})
         options[:user] ||= api_token
         options[:password] ||= 'X'
+        options[:headers] = { :client_version => Relish::Version::STRING }
         RestClient::Resource.new(url, options)
       end
 
@@ -70,7 +71,6 @@ module Relish
 
       def validate_cli_options
         cli_options.keys.each do |option|
-          
           unless valid_option_names.include?(option.to_s)
             error "'#{option}' is not a valid option."
           end
