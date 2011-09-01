@@ -28,7 +28,7 @@ module Relish
       end
 
       def url
-        "http://#{host}/api"
+        "https://#{host}/api"
       end
 
       def get_param

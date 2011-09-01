@@ -1,6 +1,6 @@
 module Relish
   class << self
-    
+
     def self.setting(name, value)
       attr_writer name
       class_eval %{
@@ -11,10 +11,10 @@ module Relish
         end                                      # end
       }
     end
-    
+
     setting :global_options_file, File.join(File.expand_path('~'), '.relish')
     setting :local_options_file,  '.relish'
-    setting :default_host,        'www.relishapp.com'
+    setting :default_host,        'api.relishapp.com'
   end
 end
 
