@@ -14,6 +14,8 @@ module Relish
     
     setting :global_options_file, File.join(File.expand_path('~'), '.relish')
     setting :local_options_file,  '.relish'
-    setting :default_host,        'relishapp.com'
+    setting :default_host,        'www.relishapp.com'
   end
 end
+
+require 'relish/version'
