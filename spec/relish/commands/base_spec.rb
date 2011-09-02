@@ -7,14 +7,14 @@ module Relish
       describe '#url' do
         context 'host passed in command line' do
           let(:base) { described_class.new(['--host', 'test.com']) }
-          specify { base.url.should eq('http://test.com/api') }
+          specify { base.url.should eq('https://test.com/api') }
         end
         
         context 'host not passed in command line' do
           let(:base) { described_class.new }
           
           it 'returns the default host' do
-            base.url.should eq("http://#{Relish.default_host}/api")
+            base.url.should eq("https://#{Relish.default_host}/api")
           end
         end
       end
@@ -52,7 +52,7 @@ module Relish
             endpoint = double
 
             RestClient::Resource.stub(:new).
-              with(anything, :user => user, :password => password).
+              with(anything, :user => user, :password => password, :headers => anything).
               and_return name => endpoint
     
             endpoint
