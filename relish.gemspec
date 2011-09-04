@@ -31,8 +31,8 @@ Gem::Specification.new do |s|
   {
     'bundler'             => '~> 1.0.0',
     'rake'                => '~> 0.8.7',
-    'rspec'               => '~> 2.0.0',
-    'cucumber'            => '~> 0.9.1',
+    'rspec'               => '~> 2.6.0',
+    'cucumber'            => '~> 1.0.2',
     'aruba'               => '~> 0.4.5',
     'fakeweb'             => '~> 1.3.0'
   }.each do |lib, version|
