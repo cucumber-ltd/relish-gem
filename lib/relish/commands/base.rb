@@ -15,7 +15,7 @@ module Relish
 
       option :api_token, :default => lambda { get_and_store_api_token }
       option :host,      :default => lambda { Relish.default_host }
-      option :ssl,       :default => lambda { 'on' }
+      option :ssl,       :default => lambda { Relish.default_ssl }
 
       attr_writer :args
       attr_reader :cli_options
