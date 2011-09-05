@@ -15,6 +15,7 @@ module Relish
 
       option :api_token, :default => lambda { get_and_store_api_token }
       option :host,      :default => lambda { Relish.default_host }
+      option :ssl,       :default => lambda { 'on' }
 
       attr_writer :args
       attr_reader :cli_options
@@ -28,7 +29,7 @@ module Relish
       end
 
       def url
-        "https://#{host}/api"
+        "#{protocol}://#{host}/api"
       end
 
       def get_param
@@ -36,6 +37,11 @@ module Relish
       end
 
     private
+
+      def protocol
+        return 'http' if ssl == 'off'
+        'https'
+      end
 
       def project
         merged_options['project'] || error(:project_blank)

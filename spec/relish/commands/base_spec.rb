@@ -17,6 +17,12 @@ module Relish
             base.url.should eq("https://#{Relish.default_host}/api")
           end
         end
+
+        context '--ssl off switch passed' do
+          let(:base) { described_class.new(['--ssl', 'off']) }
+          specify { base.url.should =~ /^http:/ }
+        end
+
       end
       
       describe '#api_token' do
