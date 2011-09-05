@@ -17,5 +17,3 @@ module Relish
     setting :default_host,        'api.relishapp.com'
   end
 end
-
-require 'relish/version'
