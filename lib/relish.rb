@@ -1,3 +1,5 @@
+require 'relish/version'
+
 module Relish
   class << self
 
