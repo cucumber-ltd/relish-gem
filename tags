@@ -1,0 +1,177 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+==	lib/relish/options_file.rb	/^    def == (other)$/;"	f	class:Relish.OptionsFile
+Base	lib/relish/commands/base.rb	/^    class Base$/;"	c	class:Relish.Command
+ClassMethods	lib/relish/resource_methods.rb	/^    module ClassMethods$/;"	m	class:Relish.ResourceMethods
+Collab	lib/relish/commands/collab.rb	/^    class Collab < Base$/;"	c	class:Relish.Command
+Command	lib/relish/command.rb	/^  module Command$/;"	m	class:Relish
+Command	lib/relish/commands/base.rb	/^  module Command$/;"	m	class:Relish
+Command	lib/relish/commands/collab.rb	/^  module Command$/;"	m	class:Relish
+Command	lib/relish/commands/config.rb	/^  module Command$/;"	m	class:Relish
+Command	lib/relish/commands/dsl.rb	/^  module Command$/;"	m	class:Relish
+Command	lib/relish/commands/dsl/command.rb	/^      class Command$/;"	c	class:Relish.Command.Dsl
+Command	lib/relish/commands/dsl/command.rb	/^  module Command$/;"	m	class:Relish
+Command	lib/relish/commands/dsl/context_class.rb	/^  module Command$/;"	m	class:Relish
+Command	lib/relish/commands/dsl/help_text.rb	/^  module Command$/;"	m	class:Relish
+Command	lib/relish/commands/dsl/option.rb	/^  module Command$/;"	m	class:Relish
+Command	lib/relish/commands/help.rb	/^  module Command$/;"	m	class:Relish
+Command	lib/relish/commands/projects.rb	/^  module Command$/;"	m	class:Relish
+Command	lib/relish/commands/push.rb	/^  module Command$/;"	m	class:Relish
+Command	lib/relish/commands/versions.rb	/^  module Command$/;"	m	class:Relish
+Command	lib/relish/param_methods.rb	/^  module Command$/;"	m	class:Relish
+Command	spec/relish/commands/base_spec.rb	/^  module Command$/;"	m	class:Relish
+Command	spec/relish/commands/config_spec.rb	/^  module Command$/;"	m	class:Relish
+Command	spec/relish/commands/dsl/command_spec.rb	/^  module Command$/;"	m	class:Relish
+Command	spec/relish/commands/dsl/help_text_spec.rb	/^  module Command$/;"	m	class:Relish
+Command	spec/relish/commands/dsl/option_spec.rb	/^  module Command$/;"	m	class:Relish
+Command	spec/relish/param_methods_spec.rb	/^  module Command$/;"	m	class:Relish
+Config	lib/relish/commands/config.rb	/^    class Config < Base$/;"	c	class:Relish.Command
+ContextClass	lib/relish/commands/dsl/context_class.rb	/^      module ContextClass$/;"	m	class:Relish.Command.Dsl
+Dsl	lib/relish/commands/dsl.rb	/^    module Dsl$/;"	m	class:Relish.Command
+Dsl	lib/relish/commands/dsl/command.rb	/^    module Dsl$/;"	m	class:Relish.Command
+Dsl	lib/relish/commands/dsl/context_class.rb	/^    module Dsl$/;"	m	class:Relish.Command
+Dsl	lib/relish/commands/dsl/help_text.rb	/^    module Dsl$/;"	m	class:Relish.Command
+Dsl	lib/relish/commands/dsl/option.rb	/^    module Dsl$/;"	m	class:Relish.Command
+Dsl	spec/relish/commands/dsl/command_spec.rb	/^    module Dsl$/;"	m	class:Relish.Command
+Dsl	spec/relish/commands/dsl/help_text_spec.rb	/^    module Dsl$/;"	m	class:Relish.Command
+Dsl	spec/relish/commands/dsl/option_spec.rb	/^    module Dsl$/;"	m	class:Relish.Command
+ErrorMessages	lib/relish/error_messages.rb	/^  module ErrorMessages$/;"	m	class:Relish
+Formatter	lib/relish/commands/help.rb	/^      class Formatter$/;"	c	class:Relish.Command.Help
+Help	lib/relish/commands/help.rb	/^    class Help < Base$/;"	c	class:Relish.Command
+HelpText	lib/relish/commands/dsl/help_text.rb	/^      class HelpText$/;"	c	class:Relish.Command.Dsl
+Helpers	lib/relish/helpers.rb	/^  module Helpers$/;"	m	class:Relish
+Option	lib/relish/commands/config.rb	/^      class Option$/;"	c	class:Relish.Command.Config
+Option	lib/relish/commands/dsl/option.rb	/^      class Option$/;"	c	class:Relish.Command.Dsl
+OptionsFile	lib/relish/options_file.rb	/^  class OptionsFile$/;"	c	class:Relish
+ParamMethods	lib/relish/param_methods.rb	/^    module ParamMethods$/;"	m	class:Relish.Command
+Projects	lib/relish/commands/projects.rb	/^    class Projects < Base$/;"	c	class:Relish.Command
+Push	lib/relish/commands/push.rb	/^    class Push < Base$/;"	c	class:Relish.Command
+Relish	lib/relish.rb	/^module Relish$/;"	m
+Relish	lib/relish/command.rb	/^module Relish$/;"	m
+Relish	lib/relish/commands/base.rb	/^module Relish$/;"	m
+Relish	lib/relish/commands/collab.rb	/^module Relish$/;"	m
+Relish	lib/relish/commands/config.rb	/^module Relish$/;"	m
+Relish	lib/relish/commands/dsl.rb	/^module Relish$/;"	m
+Relish	lib/relish/commands/dsl/command.rb	/^module Relish$/;"	m
+Relish	lib/relish/commands/dsl/context_class.rb	/^module Relish$/;"	m
+Relish	lib/relish/commands/dsl/help_text.rb	/^module Relish$/;"	m
+Relish	lib/relish/commands/dsl/option.rb	/^module Relish$/;"	m
+Relish	lib/relish/commands/help.rb	/^module Relish$/;"	m
+Relish	lib/relish/commands/projects.rb	/^module Relish$/;"	m
+Relish	lib/relish/commands/push.rb	/^module Relish$/;"	m
+Relish	lib/relish/commands/versions.rb	/^module Relish$/;"	m
+Relish	lib/relish/error_messages.rb	/^module Relish$/;"	m
+Relish	lib/relish/helpers.rb	/^module Relish$/;"	m
+Relish	lib/relish/options_file.rb	/^module Relish$/;"	m
+Relish	lib/relish/param_methods.rb	/^module Relish$/;"	m
+Relish	lib/relish/resource_methods.rb	/^module Relish$/;"	m
+Relish	lib/relish/ui.rb	/^module Relish$/;"	m
+Relish	lib/relish/version.rb	/^module Relish$/;"	m
+Relish	spec/relish/commands/base_spec.rb	/^module Relish$/;"	m
+Relish	spec/relish/commands/config_spec.rb	/^module Relish$/;"	m
+Relish	spec/relish/commands/dsl/command_spec.rb	/^module Relish$/;"	m
+Relish	spec/relish/commands/dsl/help_text_spec.rb	/^module Relish$/;"	m
+Relish	spec/relish/commands/dsl/option_spec.rb	/^module Relish$/;"	m
+Relish	spec/relish/error_messages_spec.rb	/^module Relish$/;"	m
+Relish	spec/relish/options_file_spec.rb	/^module Relish$/;"	m
+Relish	spec/relish/param_methods_spec.rb	/^module Relish$/;"	m
+ResourceMethods	lib/relish/resource_methods.rb	/^  module ResourceMethods$/;"	m	class:Relish
+Ui	lib/relish/ui.rb	/^  class Ui$/;"	c	class:Relish
+Version	lib/relish/version.rb	/^  module Version$/;"	m	class:Relish
+Versions	lib/relish/commands/versions.rb	/^    class Versions < Base$/;"	c	class:Relish.Command
+[]	lib/relish/options_file.rb	/^    def [](key)$/;"	f	class:Relish.OptionsFile
+add	lib/relish/commands/dsl/help_text.rb	/^          def add(name, command)$/;"	f	class:Relish.Command.Dsl.HelpText
+api_endpoint	spec/relish/commands/base_spec.rb	/^          def api_endpoint(name, credentials)$/;"	f	class:Relish
+ask	lib/relish/ui.rb	/^    def ask$/;"	f	class:Relish.Ui
+ask_for_password	lib/relish/ui.rb	/^    def ask_for_password$/;"	f	class:Relish.Ui
+ask_for_password_on_windows	lib/relish/ui.rb	/^    def ask_for_password_on_windows$/;"	f	class:Relish.Ui
+clean_args	lib/relish/commands/base.rb	/^      def clean_args(args)$/;"	f	class:Relish.Command.Base
+clear_commands	lib/relish/commands/dsl/help_text.rb	/^          def clear_commands$/;"	f	class:Relish.Command.Dsl.HelpText
+command	lib/relish/commands/dsl.rb	/^      def command(arg, &block)$/;"	f	class:Relish.Command.Dsl
+commands	lib/relish/commands/dsl/help_text.rb	/^          def commands$/;"	f	class:Relish.Command.Dsl.HelpText
+context_class_eval	lib/relish/commands/dsl/context_class.rb	/^        def context_class_eval(&block)$/;"	f	class:Relish.Command.Dsl.ContextClass
+context_class_name	lib/relish/commands/dsl/context_class.rb	/^        def context_class_name$/;"	f	class:Relish.Command.Dsl.ContextClass
+current_options	lib/relish/options_file.rb	/^    def current_options$/;"	f	class:Relish.OptionsFile
+define	lib/relish/commands/dsl/command.rb	/^        def define(name, &block)$/;"	f	class:Relish.Command.Dsl.Command
+define	lib/relish/commands/dsl/option.rb	/^        def define(name, options = {})$/;"	f	class:Relish.Command.Dsl.Option
+desc	lib/relish/commands/dsl.rb	/^      def desc(*text)$/;"	f	class:Relish.Command.Dsl
+echo_off	lib/relish/ui.rb	/^    def echo_off$/;"	f	class:Relish.Ui
+echo_on	lib/relish/ui.rb	/^    def echo_on$/;"	f	class:Relish.Ui
+error	lib/relish/helpers.rb	/^    def error(message)$/;"	f	class:Relish.Helpers
+escape	lib/relish/commands/base.rb	/^      def escape(str)$/;"	f	class:Relish.Command.Base.json_parse
+extract_option	lib/relish/param_methods.rb	/^      def extract_option$/;"	f	class:Relish.Command.ParamMethods
+extract_project_handle	lib/relish/param_methods.rb	/^      def extract_project_handle$/;"	f	class:Relish.Command.ParamMethods
+files	lib/relish/commands/push.rb	/^      def files$/;"	f	class:Relish.Command
+files_as_tar_gz	lib/relish/commands/push.rb	/^      def files_as_tar_gz$/;"	f	class:Relish.Command
+format	lib/relish/commands/collab.rb	/^      def format(response)$/;"	f	class:Relish.Command.Collab
+format	lib/relish/commands/help.rb	/^        def format        $/;"	f	class:Relish.Command.Help.Formatter
+format	lib/relish/commands/projects.rb	/^      def format(response)$/;"	f	class:Relish.Command.Projects
+format	lib/relish/commands/versions.rb	/^      def format(response)$/;"	f	class:Relish.Command.Versions
+format_usage	lib/relish/commands/help.rb	/^        def format_usage(index)$/;"	f	class:Relish.Command.Help
+get_and_store_api_token	lib/relish/commands/base.rb	/^      def get_and_store_api_token$/;"	f	class:Relish.Command.Base
+get_api_token	lib/relish/commands/base.rb	/^      def get_api_token$/;"	f	class:Relish.Command.Base
+get_command	lib/relish/command.rb	/^      def get_command(command)$/;"	f	class:Relish.Command
+get_command_and_method	lib/relish/command.rb	/^      def get_command_and_method(command, args)$/;"	f	class:Relish.Command
+get_credentials	lib/relish/ui.rb	/^    def get_credentials$/;"	f	class:Relish.Ui
+get_method	lib/relish/command.rb	/^      def get_method(method)$/;"	f	class:Relish.Command
+get_next_description	lib/relish/commands/dsl/help_text.rb	/^          def get_next_description$/;"	f	class:Relish.Command.Dsl.HelpText
+get_next_usage	lib/relish/commands/dsl/help_text.rb	/^          def get_next_usage$/;"	f	class:Relish.Command.Dsl.HelpText
+get_param	lib/relish/commands/base.rb	/^      def get_param$/;"	f	class:Relish.Command.Base
+global_options_file	lib/relish/commands/base.rb	/^      def global_options_file$/;"	f	class:Relish.Command.Base
+handle	lib/relish/commands/projects.rb	/^      def handle$/;"	f	class:Relish.Command.Projects
+handle_blank	lib/relish/error_messages.rb	/^    def handle_blank$/;"	f	class:Relish.ErrorMessages
+handle_or_email	lib/relish/commands/collab.rb	/^      def handle_or_email$/;"	f	class:Relish.Command.Collab
+handle_to_add	lib/relish/commands/projects.rb	/^      def handle_to_add$/;"	f	class:Relish.Command.Projects
+handle_to_remove	lib/relish/commands/projects.rb	/^      def handle_to_remove$/;"	f	class:Relish.Command.Projects
+has_option?	lib/relish/param_methods.rb	/^      def has_option?$/;"	f	class:Relish.Command.ParamMethods
+help	lib/relish/error_messages.rb	/^    def help(pad = true)$/;"	f	class:Relish.ErrorMessages
+included	lib/relish/resource_methods.rb	/^    def self.included(command_class)$/;"	F	class:Relish.ResourceMethods
+initialize	lib/relish/commands/base.rb	/^      def initialize(args = [])$/;"	f	class:Relish.Command.Base
+initialize	lib/relish/commands/config.rb	/^        def initialize(param)$/;"	f	class:Relish.Command.Config.Option
+initialize	lib/relish/commands/dsl/context_class.rb	/^        def initialize(context_class)$/;"	f	class:Relish.Command.Dsl.ContextClass
+initialize	lib/relish/commands/help.rb	/^        def initialize(command, hash)$/;"	f	class:Relish.Command.Help.Formatter
+initialize	lib/relish/options_file.rb	/^    def initialize(path)$/;"	f	class:Relish.OptionsFile
+json_parse	lib/relish/commands/base.rb	/^      def json_parse(response, &block)$/;"	f	class:Relish.Command.Base
+local_options_file	lib/relish/commands/base.rb	/^      def local_options_file$/;"	f	class:Relish.Command.Base
+max_usage_length	lib/relish/commands/dsl/help_text.rb	/^          def max_usage_length$/;"	f	class:Relish.Command.Dsl.HelpText
+max_usage_length	lib/relish/commands/help.rb	/^        def max_usage_length$/;"	f	class:Relish.Command.Help
+merge	lib/relish/options_file.rb	/^    def merge(other)$/;"	f	class:Relish.OptionsFile
+merged_options	lib/relish/commands/base.rb	/^      def merged_options$/;"	f	class:Relish.Command.Base
+names	lib/relish/commands/dsl/option.rb	/^        def self.names$/;"	F	class:Relish.Command.Dsl.Option
+option	lib/relish/commands/dsl.rb	/^      def option(name, options = {})$/;"	f	class:Relish.Command.Dsl
+options	lib/relish/options_file.rb	/^    def options$/;"	f	class:Relish.OptionsFile
+organization_params	lib/relish/commands/push.rb	/^      def organization_params$/;"	f	class:Relish.Command
+post	lib/relish/commands/push.rb	/^      def post(tar_gz_data, params)$/;"	f	class:Relish.Command.Push
+private?	lib/relish/commands/projects.rb	/^      def private?$/;"	f	class:Relish.Command.Projects
+project	lib/relish/commands/base.rb	/^      def project$/;"	f	class:Relish.Command.Base
+project	lib/relish/commands/push.rb	/^      def project$/;"	f	class:Relish.Command
+project_blank	lib/relish/error_messages.rb	/^    def project_blank$/;"	f	class:Relish.ErrorMessages
+project_params	lib/relish/commands/push.rb	/^      def project_params$/;"	f	class:Relish.Command.Push
+protocol	lib/relish/commands/base.rb	/^      def protocol$/;"	f	class:Relish.Command.Base
+rename_handle	lib/relish/commands/projects.rb	/^      def rename_handle$/;"	f	class:Relish.Command.Projects
+reset_accessors	lib/relish/commands/dsl/help_text.rb	/^          def reset_accessors$/;"	f	class:Relish.Command.Dsl.HelpText
+resource	lib/relish/commands/base.rb	/^      def resource(options = {})$/;"	f	class:Relish.Command.Base
+resource_path	lib/relish/resource_methods.rb	/^      def resource_path(path)$/;"	f	class:Relish.ResourceMethods.ClassMethods
+resource_path_for_no_option	lib/relish/resource_methods.rb	/^    def resource_path_for_no_option$/;"	f	class:Relish.ResourceMethods
+resource_path_for_option	lib/relish/resource_methods.rb	/^    def resource_path_for_option$/;"	f	class:Relish.ResourceMethods
+run	lib/relish/command.rb	/^      def run(command, args)$/;"	f	class:Relish.Command
+running_on_windows?	lib/relish/ui.rb	/^    def running_on_windows?$/;"	f	class:Relish.Ui
+setting	lib/relish.rb	/^    def self.setting(name, value)$/;"	F	class:Relish
+store	lib/relish/options_file.rb	/^    def store(options)$/;"	f	class:Relish.OptionsFile
+to_hash	lib/relish/commands/config.rb	/^        def to_hash$/;"	f	class:Relish.Command.Config.Option
+ui	lib/relish/commands/base.rb	/^      def ui$/;"	f	class:Relish.Command.Base
+unknown_command	lib/relish/error_messages.rb	/^    def unknown_command$/;"	f	class:Relish.ErrorMessages
+url	lib/relish/commands/base.rb	/^      def url$/;"	f	class:Relish.Command.Base
+usage	lib/relish/commands/dsl.rb	/^      def usage(text)$/;"	f	class:Relish.Command.Dsl
+usage	lib/relish/commands/help.rb	/^        def usage$/;"	f	class:Relish.Command.Help.Formatter
+valid_option_names	lib/relish/commands/base.rb	/^      def valid_option_names$/;"	f	class:Relish.Command.Base
+validate_cli_options	lib/relish/commands/base.rb	/^      def validate_cli_options$/;"	f	class:Relish.Command.Base
+validate_option	lib/relish/commands/config.rb	/^        def validate_option$/;"	f	class:Relish.Command.Config.Option
+version	lib/relish/commands/push.rb	/^      def version$/;"	f	class:Relish.Command
+version_blank	lib/relish/error_messages.rb	/^    def version_blank$/;"	f	class:Relish.ErrorMessages
+version_name	lib/relish/commands/versions.rb	/^      def version_name$/;"	f	class:Relish.Command.Versions
+without_option	lib/relish/param_methods.rb	/^      def without_option$/;"	f	class:Relish.Command.ParamMethods
