@@ -18,8 +18,8 @@ describe Relish do
       ENV['HOME'] = @original_home
     end
 
-    it "still returns the global_options file setting" do
-      Relish.global_options_file.should_not be_nil
+    it "returns a non-expanded path to ~/.relish" do
+      Relish.global_options_file.should == '~/.relish'
     end
   end
 
