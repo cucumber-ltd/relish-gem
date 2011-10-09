@@ -14,7 +14,7 @@ module Relish
       }
     end
 
-    setting :global_options_file, File.join(File.expand_path('~'), '.relish') rescue "~/.relish"
+    setting :global_options_file, (File.join(File.expand_path('~'), '.relish') rescue '~/.relish')
     setting :local_options_file,  '.relish'
     setting :default_host,        'api.relishapp.com'
     setting :default_ssl,         'on'
