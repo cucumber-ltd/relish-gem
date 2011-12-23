@@ -35,6 +35,11 @@ module Relish
       def define_task!
         desc "Push #{project_name}:#{version} documentation to relishapp"
         task @task_name do
+          begin
+          Relish::Command.run('versions:add', ["#{project_name}:#{version}"])
+          rescue SystemExit
+            # version exists
+          end
           Relish::Command.run('push', ["#{project_name}:#{version}"])
         end
       end
