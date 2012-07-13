@@ -11,15 +11,15 @@ module Relish
     
       context 'with options file that exists' do
         let(:options) do
-          {'organization' => 'rspec', 'project' => 'rspec-core'}
+          {'publisher' => 'rspec', 'project' => 'rspec-core'}
         end
       
         before do
           File.open(path, 'w') { |f| YAML.dump(options, f) }
         end
       
-        it 'parses the organization' do
-          global_options['organization'].should eq('rspec')
+        it 'parses the publisher' do
+          global_options['publisher'].should eq('rspec')
         end
       
         it 'parses the project' do
@@ -42,16 +42,16 @@ module Relish
       context 'with options file that exists' do
       
         let(:options) do
-          {'organization' => 'rspec', 'project' => 'rspec-core'}
+          {'publisher' => 'rspec', 'project' => 'rspec-core'}
         end
       
         before do
           File.open(path, 'w') { |f| YAML.dump(options, f) }
-          global_options.store('organization' => 'relish')
+          global_options.store('publisher' => 'relish')
         end
       
         it "over-writes existing values" do
-          OptionsFile.new(path).options['organization'].should == 'relish'
+          OptionsFile.new(path).options['publisher'].should == 'relish'
         end
       
         it 'leaves existing options alone' do

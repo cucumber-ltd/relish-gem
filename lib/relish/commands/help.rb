@@ -5,13 +5,12 @@ module Relish
       desc 'show this usage'
       command :default do
         puts <<-TEXT
-A <project> can be scoped by an organization or user handle. For
-example, if an organiztion (rspec) has a project (rspec-core), then
-the <project> would be `rspec/rspec-core`. If a user (justin) has a
-project (my-project), then <project> would be `justin/my-project`.
+A <project> can be scoped by a publisher name. For
+example, if a publisher (rspec) has a project (rspec-core), then
+the <project> would be `rspec/rspec-core`.
 
-If you leave off the organization or user handle, then it defaults
-to the user (you).
+If you leave off the publisher name, then it defaults
+to the user (you), assuming you are publishing projects.
 
         TEXT
         puts "=== Available Commands\n\n"

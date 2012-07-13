@@ -7,7 +7,7 @@ module Relish
         puts format(resource['projects'].get(:accept => :json))
       end
 
-      usage   'projects:add <org or user handle>/<project handle>'
+      usage   'projects:add <publisher name>/<project name>'
       desc    'add a project',
               'append :private to make the project private',
               'example: relish projects:add rspec/rspec-core:private'

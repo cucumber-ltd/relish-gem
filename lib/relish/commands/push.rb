@@ -18,11 +18,11 @@ module Relish
         post files_as_tar_gz, project_params
       end
 
-      usage   'push:org <organization handle>'
-      desc    'push markdown files to an organization',
-              'example: relish push:org rspec'
-      command :org do
-        post files_as_tar_gz, organization_params
+      usage   'push:publisher <publisher name>'
+      desc    'push markdown files to a publisher',
+              'example: relish push:publisher rspec'
+      command :publisher do
+        post files_as_tar_gz, publisher_params
       end
 
     private
@@ -40,8 +40,8 @@ module Relish
         end
       end
 
-      def organization_params
-        "organization_id=#{@param}"
+      def publisher_params
+        "publisher_id=#{@param}"
       end
 
       def project
