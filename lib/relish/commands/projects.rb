@@ -1,3 +1,5 @@
+require 'relish/commands/handle'
+
 module Relish
   module Command
     class Projects < Base
@@ -18,14 +20,14 @@ module Relish
       usage   'projects:remove <project>'
       desc    'remove a project'
       command :remove do
-        puts resource["projects/#{escape(handle_to_remove)}"].delete
+        puts resource[resource_url(handle_to_remove)].delete
       end
 
       usage   'projects:visibility <project>:<public or private>'
       desc    'set the status of a project',
               'example: relish projects:visibility rspec/rspec-core:private'
       command :visibility do
-        puts resource["projects/#{escape(handle_to_update)}"].put(
+        puts resource[resource_url(handle_to_update)].put(
           :project => { :private => private? }
         )
       end
@@ -34,7 +36,7 @@ module Relish
       desc    "rename a project's handle",
               'example: relish projects:rename rspec/rspec-core:rspec-corez'
       command :rename do
-        puts resource["projects/#{escape(handle_to_update)}"].put(
+        puts resource[resource_url(handle_to_update)].put(
           :project => { :handle => rename_handle }
         )
       end
@@ -70,6 +72,9 @@ module Relish
         @param.extract_option == 'private'
       end
 
+      def resource_url(handle)
+        Commands::Handle.new(handle).resource_url
+      end
     end
   end
 end

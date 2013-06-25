@@ -1,6 +1,6 @@
 module Relish
   module Version
-    STRING = '0.6'
+    STRING = '0.7'
   end
 end
 

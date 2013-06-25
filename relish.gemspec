@@ -7,7 +7,6 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = '>= 1.3.5'
   s.authors = ["Matt Wynne", "Justin Ko"]
-  s.date = Date.today
   s.description = %q{Client gem for http://relishapp.com}
   s.email = "matt@mattwynne.net"
 
@@ -30,7 +29,7 @@ Gem::Specification.new do |s|
   end
 
   {
-    'bundler'             => '~> 1.2.0.pre.1',
+    'bundler'             => '~> 1.3',
     'rake'                => '~> 0.8.7',
     'rspec'               => '~> 2.8.0',
     'cucumber'            => '~> 1.0.2',
