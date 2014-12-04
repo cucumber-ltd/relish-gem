@@ -22,7 +22,7 @@ Gem::Specification.new do |s|
 
   {
     'archive-tar-minitar' => '>= 0.5.2',
-    'rest-client'         => '>= 1.6.1',
+    'rest-client'         => '>= 1.7.2',
     'json'                => '>= 1.4.6'
   }.each do |lib, version|
     s.add_runtime_dependency lib, version

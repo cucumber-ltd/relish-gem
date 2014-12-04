@@ -64,6 +64,7 @@ module Relish
         options[:user] ||= api_token
         options[:password] ||= 'X'
         options[:headers] = { :client_version => Relish::Version::STRING }
+        options[:ssl_version] = 'SSLv23'
         RestClient::Resource.new(url, options)
       end
 
