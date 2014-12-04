@@ -30,7 +30,7 @@ Gem::Specification.new do |s|
 
   {
     'bundler'             => '~> 1.3',
-    'rake'                => '~> 0.8.7',
+    'rake'                => '~> 10',
     'rspec'               => '~> 2.8.0',
     'cucumber'            => '~> 1.0.2',
     'aruba'               => '~> 0.4.5',
