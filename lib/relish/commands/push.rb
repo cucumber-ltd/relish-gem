@@ -69,6 +69,7 @@ module Relish
 
       def files
         Dir["#{path}/**/*.{feature,md,markdown}"] +
+        Dir["#{path}/.nav"] +
         Dir["#{path}/**/.nav"]
       end
 
@@ -77,4 +78,3 @@ module Relish
 
   end
 end
-
