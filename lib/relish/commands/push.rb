@@ -1,5 +1,5 @@
 require 'zlib'
-require 'archive/tar/minitar'
+require 'minitar'
 require 'stringio'
 require 'rest_client'
 
@@ -57,9 +57,9 @@ module Relish
         stream = StringIO.new
         begin
           tgz = Zlib::GzipWriter.new(stream)
-          tar = Archive::Tar::Minitar::Output.new(tgz)
+          tar = Minitar::Output.new(tgz)
           files.each do |entry|
-            Archive::Tar::Minitar.pack_file(entry, tar)
+            Minitar.pack_file(entry, tar)
           end
         ensure
           tar.close if tar # Closes both tar and tgz.

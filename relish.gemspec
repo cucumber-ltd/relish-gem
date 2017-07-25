@@ -21,7 +21,7 @@ Gem::Specification.new do |s|
   s.executables  = `git ls-files -- bin/*`.split("\n").map{ |f| File.basename(f) }
 
   {
-    'archive-tar-minitar' => '>= 0.5.2',
+    'minitar' => '>= 0.5.2',
     'rest-client'         => '>= 1.7.2',
     'json'                => '>= 1.4.6'
   }.each do |lib, version|
